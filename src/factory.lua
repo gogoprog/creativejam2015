@@ -1,4 +1,5 @@
 require 'component_poolable'
+require 'component_box'
 
 Factory = Factory or {
     objects = {}
@@ -32,7 +33,7 @@ function Factory:createCamera()
     e:addComponent(
         ComponentCamera(),
         {
-            extent = vector2(800, 600)
+            extent = vector2(800, 800)
         },
         "camera"
         )
@@ -63,6 +64,29 @@ function Factory:createObject(x, y)
     end
 
     e.position:set(x, y)
+
+    return e
+end
+function Factory:createObstacle(i, j, texture)
+    local e = gengine.entity.create()
+
+    e:addComponent(
+        ComponentSprite(),
+        {
+            texture = gengine.graphics.texture.get(texture),
+            layer = 0,
+        },
+        "sprite"
+        )
+
+    e:addComponent(
+        ComponentBox(),
+        {
+        },
+        "box"
+        )
+
+    e.box:setPosition(i , j)
 
     return e
 end
