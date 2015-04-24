@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="6" height="6" tilewidth="96" tileheight="96" nextobjectid="1">
+ <tileset firstgid="1" name="tiles" tilewidth="96" tileheight="96">
+  <tile id="0">
+   <image width="96" height="96" source="obstacle.png"/>
+  </tile>
+  <tile id="1">
+   <image width="96" height="96" source="valid.png"/>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="6" height="6">
+  <data encoding="base64" compression="zlib">
+   eJxjYIAARgbsAF2cEQnTAgAAApwABg==
+  </data>
+ </layer>
+</map>
