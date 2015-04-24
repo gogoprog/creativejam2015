@@ -2,8 +2,8 @@
 require 'application'
 
 function init()
-    gengine.application.setName("[gengine-samples] 90-game_skeleton")
-    gengine.application.setExtent(800, 600)
+    gengine.application.setName("CreativeJam2015")
+    gengine.application.setExtent(800, 800)
     gengine.application.setFullscreen(false)
 end
 
