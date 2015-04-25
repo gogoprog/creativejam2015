@@ -21,7 +21,11 @@ end
 local textures = {
     "start",
     "end",
-    "cuve"
+    "cuve",
+    "todo",
+    "todo",
+    "todo",
+    "todo"
 }
 
 function Map:loadFile(filename)
@@ -45,7 +49,7 @@ function Map:loadFile(filename)
             elseif v == 2 then
                 self.endPositionIndices = vector2(x, y)
                 self:addObstacle(x, y, v, false)
-            else
+            elseif v == 3 then
                 self:addObstacle(x, y, v, true)
             end
         end

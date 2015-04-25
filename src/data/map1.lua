@@ -41,6 +41,24 @@ return {
           image = "obstacle.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 3,
+          image = "bonus.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 4,
+          image = "insect.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 5,
+          image = "polution.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -58,12 +76,12 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        1, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        3, 3, 3, 3, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 2
+        0, 0, 2, 0, 0, 0,
+        0, 0, 0, 0, 5, 0,
+        0, 0, 3, 3, 4, 0,
+        0, 0, 3, 3, 0, 6,
+        0, 5, 0, 0, 0, 0,
+        0, 0, 0, 1, 0, 0
       }
     }
   }
