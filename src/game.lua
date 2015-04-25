@@ -111,6 +111,8 @@ function Game.onStateEnter:winning()
 
     local e = Factory:createFireworkParticle()
     e:insert()
+
+    Audio:playSound("win")
 end
 
 function Game.onStateUpdate:winning(dt)
@@ -128,6 +130,7 @@ end
 
 function Game.onStateEnter:losing()
     self.time = 2
+    Audio:playSound("dead")
 end
 
 function Game.onStateUpdate:losing(dt)

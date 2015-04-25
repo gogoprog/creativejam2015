@@ -92,6 +92,8 @@ function ComponentPlayer.onStateEnter:moving()
 
     self.startPosition = Map:getTilePosition(self.indices.x, self.indices.y)
     self.endPosition = Map:getTilePosition(self.target.x, self.target.y)
+
+    Audio:playSound("walking", 2, 0.3)
 end
 
 function ComponentPlayer.onStateUpdate:moving(dt)
