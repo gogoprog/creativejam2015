@@ -19,6 +19,10 @@ function Game:init(dt)
     self.underground = Factory:createSprite("underground", 850, 850, -10)
     self.player = Factory:createPlayer()
     self.hole = Factory:createHole()
+    self.numberOfGlasses = 1
+    gengine.gui.executeScript("updateGlasses("..self.numberOfGlasses..")")
+    self.numberOfLife = 3
+    gengine.gui.executeScript("updateLife("..self.numberOfLife..")")    
 end
 
 function Game:finalize()
@@ -199,6 +203,7 @@ end
 
 function Game:addGlasses( value )
     self.numberOfGlasses = self.numberOfGlasses + value
+    gengine.gui.executeScript("updateGlasses("..self.numberOfGlasses..")")
 end
 
 function Game:getNumberOfGlasses()
