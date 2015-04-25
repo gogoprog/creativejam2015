@@ -149,6 +149,8 @@ function Game:isRunning()
 end
 
 function Game:start(lvl)
+    --Audio:playSound("start")
+
     self.itIsRunning = true
 
     self.currentLevel = lvl or 1

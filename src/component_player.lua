@@ -120,7 +120,7 @@ end
 
 function ComponentPlayer.onStateEnter:shaking()
     self.duration = 0.5
-
+    Audio:playSound("collision")
 end
 
 function ComponentPlayer.onStateUpdate:shaking(dt)

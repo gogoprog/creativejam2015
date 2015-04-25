@@ -1,5 +1,6 @@
 
 require 'application'
+require 'audio'
 
 function init()
     gengine.application.setName("CreativeJam2015")
@@ -9,6 +10,8 @@ end
 
 
 function start()
+    Audio:init()
+
     gengine.graphics.setClearColor(0.5, 0.5, 0.5, 1)
 
     gengine.gui.loadFile("gui/main.html")
