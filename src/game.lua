@@ -11,6 +11,7 @@ Game = Game or {
 gengine.stateMachine(Game)
 
 function Game:init(dt)
+    gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
     Factory:init()
     self.camera = Factory:createCamera()
     self.camera:insert()
