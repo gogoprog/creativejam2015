@@ -3,7 +3,7 @@ require 'map'
 
 Game = Game or {
     objects = {},
-    mapCount = 4,
+    mapCount = 5,
     numberOfGlasses = 1,
     numberOfLife = 3
 }
@@ -50,13 +50,11 @@ end
 function Game.onStateExit:none()
 end
 
-function Game.onStateEnter:video()
+function Game.onStateEnter:wait()
     self.timeLeft = 1.0
-
-
 end
 
-function Game.onStateUpdate:video(dt)
+function Game.onStateUpdate:wait(dt)
     self.timeLeft = self.timeLeft - dt
 
     if self.timeLeft < 0 then
@@ -64,7 +62,7 @@ function Game.onStateUpdate:video(dt)
     end
 end
 
-function Game.onStateExit:video()
+function Game.onStateExit:wait()
 end
 
 function Game.onStateEnter:blinking()
@@ -105,6 +103,9 @@ end
 
 function Game.onStateEnter:winning()
     self.time = 2
+
+    local e = Factory:createFireworkParticle()
+    e:insert()
 end
 
 function Game.onStateUpdate:winning(dt)
@@ -157,7 +158,7 @@ function Game:start(lvl)
     self.hole:insert()
 
 
-    self:changeState("video")
+    self:changeState("wait")
 end
 
 function Game:stop()
@@ -193,7 +194,7 @@ function Game:loadLevel()
     self.player.position:set(Map:getTilePosition(indices.x, indices.y))
     self.player.player.indices = indices
 
-    self:changeState("video")
+    self:changeState("wait")
 end
 
 function Game:addGlasses( value )
