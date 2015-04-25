@@ -51,11 +51,7 @@ end
 function Game.onStateEnter:video()
     self.timeLeft = 1.0
 
-    local indices = Map.startPositionIndices
-    self.player.position:set(Map:getTilePosition(indices.x, indices.y))
-    self.player.player.indices = indices
 
-    self.hole.position = self.player.position
 end
 
 function Game.onStateUpdate:video(dt)
@@ -134,13 +130,21 @@ end
 function Game:start(lvl)
     self.itIsRunning = true
 
+    self.currentLevel = lvl or 1
+    Map:init(self.currentLevel)
+
+    local indices = Map.startPositionIndices
+    self.player.position:set(Map:getTilePosition(indices.x, indices.y))
+    self.player.player.indices = indices
+
+    self.hole.position = self.player.position
+
     self.underground:insert()
     self.ground:insert()
     self.player:insert()
     self.hole:insert()
 
-    self.currentLevel = lvl or 1
-    Map:init(self.currentLevel)
+
     self:changeState("video")
 end
 
@@ -170,4 +174,12 @@ function Game:nextLevel()
     Map:init(self.currentLevel)
 
     self:changeState("video")
+end
+
+function Game:addGlasses()
+
+end
+
+function Game:addLife()
+
 end

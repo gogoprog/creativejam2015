@@ -2,7 +2,9 @@ require 'factory'
 
 Map = Map or {
     obstacles = {},
-    blocks = {}
+    blocks = {},
+    glasses = {},
+    lifes = {}
 }
 
 gengine.stateMachine(Map)
@@ -22,8 +24,8 @@ local textures = {
     "start",
     "end",
     "cuve",
-    "todo",
-    "todo",
+    "bonus",
+    "insect",
     "todo",
     "todo"
 }
@@ -39,7 +41,9 @@ function Map:loadFile(filename)
     local tilesets = map.tilesets
 
     for i=1,self.width do
-        self.blocks[i] = {false, false, false, false, false, false, false}
+        self.blocks[i] = {false, false, false, false, false, false, false, false}
+        self.glasses[i] = {false, false, false, false, false, false, false, false}
+        self.lifes[i] = {false, false, false, false, false, false, false, false}
     end
 
     for k, v in ipairs(data) do
@@ -54,6 +58,10 @@ function Map:loadFile(filename)
                 self:addObstacle(x, y, v, false)
             elseif v == 3 then
                 self:addObstacle(x, y, v, true)
+            elseif v == 4 then
+                self.glasses[x][y] = self:addObstacle(x, y, v, false)
+            elseif v == 5 then
+                self.lifes[x][y] = self:addObstacle(x, y, v, false)
             end
         end
     end
@@ -79,6 +87,8 @@ function Map:addObstacle(x, y, v, blocking)
     if blocking then
         self.blocks[x][y] = blocking
     end
+
+    return b
 end
 
 function Map:getTilePosition(i, j)
@@ -90,4 +100,26 @@ function Map:isBlocking(i, j)
         return true
     end
     return self.blocks[i][j]
+end
+
+function Map:isLife(i, j)
+    return self.lifes[i][j]
+end
+
+function Map:isGlasses(i, j)
+    return self.glasses[i][j]
+end
+
+function Map:removeGlasses(i, j)
+    local e = self.glasses[i][j]
+    e:remove()
+    gengine.entity.destroy(e)
+    self.glasses[i][j] = false
+end
+
+function Map:removeLife(i, j)
+    local e = self.lifes[i][j]
+    e:remove()
+    gengine.entity.destroy(e)
+    self.lifes[i][j] = false
 end

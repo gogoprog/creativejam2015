@@ -5,10 +5,10 @@ ComponentPlayer = {
 gengine.stateMachine(ComponentPlayer)
 
 function ComponentPlayer:init()
-    self:changeState("idling")
 end
 
 function ComponentPlayer:insert()
+    self:changeState("idling")
 end
 
 function ComponentPlayer:update(dt)
@@ -26,6 +26,18 @@ function ComponentPlayer.onStateEnter:idling()
 
     if self.indices == Map.endPositionIndices then
         Game:changeState("winning")
+    end
+
+    local i, j = self.indices.x, self.indices.y
+
+    if Map:isGlasses(i, j) then
+        Game:addGlasses()
+        Map:removeGlasses(i, j)
+    end
+
+    if Map:isLife(i, j) then
+        Game:addLife()
+        Map:removeLife(i, j)
     end
 end
 
