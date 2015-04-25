@@ -7,7 +7,8 @@ require 'component_shaker'
 Factory = Factory or {
     objects = {},
     collisionParticles = {},
-    fireworkParticles = {}
+    fireworkParticles = {},
+    bonusParticles = {}
 }
 
 function Factory:pickFromPool(t)
@@ -337,8 +338,8 @@ function Factory:createFireworkParticle()
     return e
 end
 
-function Factory:createBonusParticle()
-  local e = self:pickFromPool(self.bonusParticle)
+function Factory:createBonusParticles()
+  local e = self:pickFromPool(self.bonusParticles)
 
     if not e then
         e = gengine.entity.create()
@@ -358,13 +359,15 @@ function Factory:createBonusParticle()
                 spinRange = {-5, 5},
                 linearAccelerationRange = {vector2(0,0), vector2(0,0)},
                 scales = {vector2(0.5, 0.5)},
-                colors = {vector4(1,1,1,1), vector4(0.3,0.3,0.3,1), vector4(0,0,0,0)}
-            }
+                colors = {vector4(1,1,1,1), vector4(0.3,0.3,0.3,1), vector4(0,0,0,0)},
+                layer = 1000
+            },
+            "particle"
             )
              e:addComponent(
             ComponentPoolable(),
             {
-                pool = self.bonusParticle
+                pool = self.bonusParticles
             }
             )
 
