@@ -4,7 +4,7 @@ require 'map'
 Game = Game or {
     objects = {},
     mapCount = 4,
-    numberOfGlasses = 0,
+    numberOfGlasses = 1,
     numberOfLife = 3
 }
 
