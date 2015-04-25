@@ -337,6 +337,51 @@ function Factory:createFireworkParticle()
     return e
 end
 
+function Factory:createBonusParticle()
+  local e = self:pickFromPool(self.bonusParticle)
+
+    if not e then
+        e = gengine.entity.create()
+
+        e:addComponent(
+            ComponentParticleSystem(),
+            {
+                texture = gengine.graphics.texture.get("particle"),
+                size = 300,
+                emitterRate = 100,
+                emitterLifeTime = 1,
+                extentRange = {vector2(32,32), vector2(34,34)},
+                lifeTimeRange = {0.5, 1},
+                directionRange = {0, 2*3.14},
+                speedRange = {100, 500},
+                rotationRange = {0, 0},
+                spinRange = {-5, 5},
+                linearAccelerationRange = {vector2(0,0), vector2(0,0)},
+                scales = {vector2(0.5, 0.5)},
+                colors = {vector4(1,1,1,1), vector4(0.3,0.3,0.3,1), vector4(0,0,0,0)}
+            }
+            )
+             e:addComponent(
+            ComponentPoolable(),
+            {
+                pool = self.bonusParticle
+            }
+            )
+
+        e:addComponent(
+            ComponentAutoRemove(),
+            {
+               duration = 2
+            }
+            )
+    end
+
+    e.particle:reset()
+
+    return e
+
+end
+
 function Factory:createPlayer()
     local e = gengine.entity.create()
 
