@@ -67,6 +67,23 @@ function Factory:createObject(x, y)
 
     return e
 end
+
+function Factory:createSprite(texture, w, h, l)
+    e = gengine.entity.create()
+ 
+    e:addComponent(
+        ComponentSprite(),
+        {
+            layer = l,
+            texture = gengine.graphics.texture.get(texture),
+            extent = vector2(w, h)
+        },
+        "sprite"
+        )
+
+    return e
+end
+
 function Factory:createObstacle(i, j, texture)
     local e = gengine.entity.create()
 

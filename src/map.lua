@@ -16,7 +16,10 @@ function Map:init()
 end
 
 function Map:finalize()
-
+    for k, v in ipairs(self.obstacles) do
+        v:remove()
+        gengine.entity.destroy(v)
+    end
 end
 
 local textures = {
