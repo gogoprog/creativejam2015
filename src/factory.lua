@@ -2,6 +2,7 @@ require 'component_poolable'
 require 'component_box'
 require 'component_player'
 require 'component_auto_remove'
+require 'component_shaker'
 
 Factory = Factory or {
     objects = {},
@@ -71,6 +72,13 @@ function Factory:createCamera()
             extent = vector2(800, 800)
         },
         "camera"
+        )
+
+    e:addComponent(
+        ComponentShaker(),
+        {
+        },
+        "shaker"
         )
 
     return e

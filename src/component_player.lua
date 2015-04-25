@@ -100,6 +100,23 @@ end
 function ComponentPlayer.onStateExit:moving()
 end
 
+function ComponentPlayer.onStateEnter:shaking()
+    self.duration = 0.5
+
+end
+
+function ComponentPlayer.onStateUpdate:shaking(dt)
+    self.duration = self.duration - dt
+
+    if self.duration < 0 then
+        self:changeState("idling")
+    end
+end
+
+function ComponentPlayer.onStateExit:shaking()
+end
+
+
 function ComponentPlayer:tryMove(i, j)
 
     local a = Map:getTilePosition(self.indices.x, self.indices.y)
@@ -116,5 +133,6 @@ function ComponentPlayer:tryMove(i, j)
         local e = Factory:createCollisionParticle()
         e.position = b
         e:insert()
+        Game.camera.shaker:shake(0.5)
     end
 end

@@ -13,8 +13,8 @@ function Game:init(dt)
     self.camera = Factory:createCamera()
     self.camera:insert()
 
-    self.ground = Factory:createSprite("grass", 800, 800, 10)
-    self.underground = Factory:createSprite("underground", 800, 800, -10)
+    self.ground = Factory:createSprite("grass", 850, 850, 10)
+    self.underground = Factory:createSprite("underground", 850, 850, -10)
     self.player = Factory:createPlayer()
     self.hole = Factory:createHole()
 end
