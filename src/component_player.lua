@@ -149,7 +149,9 @@ function ComponentPlayer:tryMove(i, j)
         self:changeState("moving")
     else
         local e = Factory:createCollisionParticle()
-        e.position = b
+        local direction = gengine.math.getNormalized(b - a)
+        e.position = b -direction * 40
+        e.rotation = angle
         e:insert()
         Game.camera.shaker:shake(0.5)
         Game:addLife(-1)
