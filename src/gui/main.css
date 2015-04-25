@@ -1,6 +1,11 @@
+@font-face {
+    font-family: "HeartHole";
+    src: url("/gui/HeartHole.woff");
+    font-weight: bold;
+}
 
 #main {
-    font-family: Arial;
+    font-family: "HeartHole";
     color:white;
     font-size:25px;
     text-align: center;
