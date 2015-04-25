@@ -29,15 +29,18 @@ local textures = {
 }
 
 function Map:loadFile(filename)
-    for i=1,6 do
-        self.blocks[i] = {false, false, false, false, false, false}
-    end
 
     local map = dofile(filename)
     local w = map.width
     local h = map.height
+    self.width = w
+    self.height = h
     local data = map.layers[1].data
     local tilesets = map.tilesets
+
+    for i=1,self.width do
+        self.blocks[i] = {false, false, false, false, false, false, false}
+    end
 
     for k, v in ipairs(data) do
         if v ~= 0 then
@@ -55,11 +58,11 @@ function Map:loadFile(filename)
         end
     end
 
-    for i=0, 7 do
+    for i=0, self.width + 1 do
         self:addObstacle(i, 0, 3, false)
-        self:addObstacle(i, 7, 3, false)
+        self:addObstacle(i, self.width + 1, 3, false)
         self:addObstacle(0, i, 3, false)
-        self:addObstacle(7, i, 3, false)
+        self:addObstacle(self.width + 1, i, 3, false)
     end
 end
 
@@ -79,11 +82,11 @@ function Map:addObstacle(x, y, v, blocking)
 end
 
 function Map:getTilePosition(i, j)
-    return vector2(i * 96 - 96*3.5, j * 96 - 96*3.5)
+    return vector2(i * 96 - 96*4.5, j * 96 - 96*4.5)
 end
 
 function Map:isBlocking(i, j)
-    if i < 1 or i > 6 or j < 1 or j > 6 then
+    if i < 1 or i > self.width or j < 1 or j > self.height then
         return true
     end
     return self.blocks[i][j]

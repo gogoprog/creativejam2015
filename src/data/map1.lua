@@ -3,8 +3,8 @@ return {
   luaversion = "5.1",
   tiledversion = "0.11.0",
   orientation = "orthogonal",
-  width = 6,
-  height = 6,
+  width = 8,
+  height = 8,
   tilewidth = 96,
   tileheight = 96,
   nextobjectid = 1,
@@ -69,19 +69,21 @@ return {
       name = "Tile Layer 1",
       x = 0,
       y = 0,
-      width = 6,
-      height = 6,
+      width = 8,
+      height = 8,
       visible = true,
       opacity = 1,
       properties = {},
       encoding = "lua",
       data = {
-        0, 0, 2, 0, 0, 0,
-        0, 0, 0, 0, 5, 0,
-        0, 0, 3, 3, 4, 0,
-        0, 0, 3, 3, 0, 6,
-        0, 5, 0, 0, 0, 0,
-        0, 0, 0, 1, 0, 0
+        0, 0, 2, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 5, 0, 0, 0,
+        0, 0, 3, 3, 4, 0, 0, 0,
+        0, 0, 3, 3, 0, 6, 0, 0,
+        0, 5, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 1, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0
       }
     }
   }
