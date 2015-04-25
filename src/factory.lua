@@ -60,6 +60,23 @@ function Factory:init()
             loop = true
         }
         )
+
+    atlas = gengine.graphics.atlas.create(
+        "collision",
+        gengine.graphics.texture.get("collision"),
+        1,
+        7
+        )
+
+    self.animations.collision = gengine.graphics.animation.create(
+        "collision",
+        {
+            atlas = atlas,
+            frames = { 0, 1, 2, 3, 4, 5, 6 },
+            framerate = 16,
+            loop = false
+        }
+        )
 end
 
 function Factory:finalize()

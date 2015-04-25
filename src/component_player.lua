@@ -119,7 +119,10 @@ function ComponentPlayer.onStateExit:moving()
 end
 
 function ComponentPlayer.onStateEnter:shaking()
-    self.duration = 0.5
+    self.entity.sprite:removeAnimations()
+    self.entity.sprite:pushAnimation(Factory.animations.collision)
+
+    self.duration = 1.0
     Audio:playSound("collision")
 end
 
