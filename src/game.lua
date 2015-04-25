@@ -3,7 +3,7 @@ require 'map'
 
 Game = Game or {
     objects = {},
-    mapCount = 5,
+    mapCount = 12,
     numberOfGlasses = 1,
     numberOfLife = 3
 }
@@ -12,7 +12,6 @@ gengine.stateMachine(Game)
 
 function Game:init(dt)
     gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
-    Factory:init()
     self.camera = Factory:createCamera()
     self.camera:insert()
 
@@ -34,8 +33,6 @@ function Game:finalize()
     end
 
     self.objects = {}
-
-    Factory:finalize()
 
     gengine.entity.destroy(self.camera)
     gengine.entity.destroy(self.ground)
@@ -144,7 +141,6 @@ function Game.onStateUpdate:transitionning(dt)
     self.time = self.time - dt
 
     if self.time < 0 and not self.done then
-        self:changeState("none")
         Application:toNextLevel()
         self.done = true
     end
@@ -183,12 +179,10 @@ function Game:start(lvl)
 
     self.itIsRunning = true
 
-    self.currentLevel = lvl or 1
+    self.currentLevel = lvl or 0
     gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
 
     self:loadLevel()
-
-    self.hole.position = self.player.position
 
     self.underground:insert()
     self.ground:insert()
@@ -218,12 +212,11 @@ end
 function Game:nextLevel()
     Map:finalize()
     self.currentLevel = self.currentLevel + 1
-    if self.currentLevel > self.mapCount then
-        self.currentLevel = 1
+    if self.currentLevel >= self.mapCount then
+        self.currentLevel = 0
     end
     self:loadLevel()
     gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
-
 end
 
 function Game:loadLevel()
@@ -232,6 +225,7 @@ function Game:loadLevel()
     local indices = Map.startPositionIndices
     self.player.position:set(Map:getTilePosition(indices.x, indices.y))
     self.player.player.indices = indices
+    self.hole.position = self.player.position
 
     self:changeState("wait")
 end
@@ -259,6 +253,6 @@ end
 
 function Game:win()
     Audio:playSound("win", 2, 0.3)
-
+    self:changeState("none")
     Application:transition()
 end

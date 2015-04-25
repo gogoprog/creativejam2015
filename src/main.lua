@@ -10,6 +10,7 @@ end
 
 function start()
     Audio:init()
+    Factory:init()
 
     gengine.graphics.setClearColor(0.5, 0.5, 0.5, 1)
 
@@ -23,4 +24,5 @@ function update(dt)
 end
 
 function stop()
+    Factory:finalize()
 end
