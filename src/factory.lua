@@ -8,7 +8,8 @@ Factory = Factory or {
     objects = {},
     collisionParticles = {},
     fireworkParticles = {},
-    bonusParticles = {}
+    bonusParticles = {},
+    lifeParticules = {}
 }
 
 function Factory:pickFromPool(t)
@@ -347,28 +348,76 @@ function Factory:createBonusParticles()
         e:addComponent(
             ComponentParticleSystem(),
             {
-                texture = gengine.graphics.texture.get("particle"),
-                size = 300,
-                emitterRate = 100,
+                texture = gengine.graphics.texture.get("glasses"),
+                size = 1,
+                emitterRate = 10,
                 emitterLifeTime = 1,
                 extentRange = {vector2(32,32), vector2(34,34)},
                 lifeTimeRange = {0.5, 1},
-                directionRange = {0, 2*3.14},
-                speedRange = {100, 500},
+                directionRange = {0, 0},
+                speedRange = {0, 10},
                 rotationRange = {0, 0},
-                spinRange = {-5, 5},
+                spinRange = {-3, 3},
                 linearAccelerationRange = {vector2(0,0), vector2(0,0)},
-                scales = {vector2(0.5, 0.5)},
-                colors = {vector4(1,1,1,1), vector4(0.3,0.3,0.3,1), vector4(0,0,0,0)},
-                layer = 1000
+                scales = {vector2(5, 5),vector2(15,15)},
+                colors = {vector4(0,0.8,0.8,1)},
+                layer = 10000
             },
             "particle"
             )
-        
+
         e:addComponent(
             ComponentPoolable(),
             {
                 pool = self.bonusParticles
+            }
+            )
+
+        e:addComponent(
+            ComponentAutoRemove(),
+            {
+               duration = 2
+            }
+            )
+    end
+
+    e.particle:reset()
+
+    return e
+
+end
+
+function Factory:createLifeParticles()
+    local e = self:pickFromPool(self.lifeParticules)
+
+    if not e then
+        e = gengine.entity.create()
+
+        e:addComponent(
+            ComponentParticleSystem(),
+            {
+                texture = gengine.graphics.texture.get("life"),
+                size = 1,
+                emitterRate = 10,
+                emitterLifeTime = 1,
+                extentRange = {vector2(32,32), vector2(34,34)},
+                lifeTimeRange = {0.5, 1},
+                directionRange = {0, 0},
+                speedRange = {0, 10},
+                rotationRange = {0, 0},
+                spinRange = {-3, 3},
+                linearAccelerationRange = {vector2(0,0), vector2(0,0)},
+                scales = {vector2(5, 5),vector2(15,15)},
+                colors = {vector4(1,0,0,1)},
+                layer = 10000
+            },
+            "particle"
+            )
+
+        e:addComponent(
+            ComponentPoolable(),
+            {
+                pool = self.lifeParticules
             }
             )
 

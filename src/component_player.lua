@@ -35,7 +35,7 @@ function ComponentPlayer.onStateEnter:idling()
         Map:removeGlasses(i, j)
         Audio:playSound("bonus", 5, 0.1)
         local e = Factory:createBonusParticles()
-        -- e.position = self.indices
+        e.position = self.entity.position
         e:insert()
     end
 
@@ -43,8 +43,8 @@ function ComponentPlayer.onStateEnter:idling()
         Game:addLife(1)
         Map:removeLife(i, j)
         Audio:playSound("bonus", 5, 0.1)
-        local e = Factory:createBonusParticles()
-        -- e.position = self.indices
+        local e = Factory:createLifeParticles()
+        e.position = self.entity.position
         e:insert()
     end
 end
