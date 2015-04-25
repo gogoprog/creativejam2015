@@ -25,6 +25,7 @@ function Factory:init()
     gengine.graphics.texture.createFromDirectory("data/")
 
     local atlas
+    self.animations = {}
 
     atlas = gengine.graphics.atlas.create(
         "dig",
@@ -32,8 +33,6 @@ function Factory:init()
         1,
         7
         )
-
-    self.animations = {}
 
     self.animations.dig = gengine.graphics.animation.create(
         "dig",
@@ -45,11 +44,18 @@ function Factory:init()
         }
         )
 
+    atlas = gengine.graphics.atlas.create(
+        "idle",
+        gengine.graphics.texture.get("idle"),
+        1,
+        7
+        )
+
     self.animations.idle = gengine.graphics.animation.create(
         "idle",
         {
             atlas = atlas,
-            frames = { 5 },
+            frames = { 0, 1, 2, 3, 4, 5, 6 },
             framerate = 16,
             loop = true
         }
