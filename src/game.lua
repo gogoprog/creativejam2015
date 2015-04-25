@@ -3,7 +3,9 @@ require 'map'
 
 Game = Game or {
     objects = {},
-    mapCount = 4
+    mapCount = 4,
+    numberOfGlasses = 0,
+    numberOfLife = 3
 }
 
 gengine.stateMachine(Game)
@@ -95,10 +97,6 @@ function Game.onStateUpdate:playing(dt)
     if gengine.input.keyboard:isJustUp(41) then
         Application:goToMenu()
     end
-
-    if gengine.input.keyboard:isJustDown(5) then
-        self:changeState("blinking")
-    end
 end
 
 function Game.onStateExit:playing()
@@ -181,10 +179,14 @@ function Game:loadLevel()
     self:changeState("video")
 end
 
-function Game:addGlasses()
-
+function Game:addGlasses( value )
+    self.numberOfGlasses = self.numberOfGlasses + value
 end
 
-function Game:addLife()
+function Game:getNumberOfGlasses()
+    return self.numberOfGlasses
+end 
 
+function Game:addLife( value )
+    self.numberOfLife = self.numberOfLife + value
 end

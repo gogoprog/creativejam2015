@@ -31,12 +31,12 @@ function ComponentPlayer.onStateEnter:idling()
     local i, j = self.indices.x, self.indices.y
 
     if Map:isGlasses(i, j) then
-        Game:addGlasses()
+        Game:addGlasses(1)
         Map:removeGlasses(i, j)
     end
 
     if Map:isLife(i, j) then
-        Game:addLife()
+        Game:addLife(1)
         Map:removeLife(i, j)
     end
 end
@@ -60,6 +60,7 @@ function ComponentPlayer.onStateUpdate:idling(dt)
         if mouse:isJustDown(1) then
             startMousePosition = mouse:getPosition() 
         end
+
         if mouse:isDown(1) then 
             if startMousePosition.x < mouse:getPosition(1).x and mouse:getPosition(1).x - startMousePosition.x > 100 then 
                 self:tryMove(self.indices.x + 1, self.indices.y)
@@ -71,6 +72,11 @@ function ComponentPlayer.onStateUpdate:idling(dt)
                 self:tryMove(self.indices.x, self.indices.y + 1)
             end
         end
+    end
+
+    if gengine.input.keyboard:isJustDown(5) and Game:getNumberOfGlasses() > 0 then
+        Game:changeState("blinking")
+        Game:addGlasses(-1)
     end
 end
 
@@ -146,5 +152,7 @@ function ComponentPlayer:tryMove(i, j)
         e.position = b
         e:insert()
         Game.camera.shaker:shake(0.5)
+        Game:addLife(-1)
+        self:changeState("shaking")
     end
 end
