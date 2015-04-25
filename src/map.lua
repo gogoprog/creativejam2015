@@ -21,7 +21,7 @@ end
 local textures = {
     "start",
     "end",
-    "obstacle"
+    "cuve"
 }
 
 function Map:loadFile(filename)
@@ -39,23 +39,23 @@ function Map:loadFile(filename)
         if v ~= 0 then
             local x = ((k-1) % w) + 1
             local y = (h - math.floor((k-1)/w))
-            local b
-
-            if v ~= 1 then
-                b = Factory:createObstacle(x, y, textures[v])
-                table.insert(self.obstacles, b)
-
-                b:insert()
-            end
 
             if v == 1 then
                 self.startPositionIndices = vector2(x, y)
             elseif v == 2 then
                 self.endPositionIndices = vector2(x, y)
+                self:addObstacle(x, y, v, false)
             else
-                self:addObstacle(x, y)
+                self:addObstacle(x, y, v, true)
             end
         end
+    end
+
+    for i=0, 7 do
+        self:addObstacle(i, 0, 3, false)
+        self:addObstacle(i, 7, 3, false)
+        self:addObstacle(0, i, 3, false)
+        self:addObstacle(7, i, 3, false)
     end
 end
 
@@ -63,8 +63,15 @@ function Map:update(dt)
 
 end
 
-function Map:addObstacle(x, y)
-    self.blocks[x][y] = true
+function Map:addObstacle(x, y, v, blocking)
+    local b
+    b = Factory:createObstacle(x, y, textures[v])
+    table.insert(self.obstacles, b)
+    b:insert()
+
+    if blocking then
+        self.blocks[x][y] = blocking
+    end
 end
 
 function Map:getTilePosition(i, j)

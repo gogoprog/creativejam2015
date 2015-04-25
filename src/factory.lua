@@ -96,6 +96,7 @@ function Factory:createObstacle(i, j, texture)
         {
             texture = gengine.graphics.texture.get(texture),
             layer = 0,
+            extent = vector2(96,96)
         },
         "sprite"
         )
