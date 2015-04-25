@@ -33,11 +33,13 @@ function ComponentPlayer.onStateEnter:idling()
     if Map:isGlasses(i, j) then
         Game:addGlasses(1)
         Map:removeGlasses(i, j)
+        Audio:playSound("bonus", 5, 0.1)
     end
 
     if Map:isLife(i, j) then
         Game:addLife(1)
         Map:removeLife(i, j)
+        Audio:playSound("bonus", 5, 0.1)
     end
 end
 
@@ -141,7 +143,6 @@ end
 
 
 function ComponentPlayer:tryMove(i, j)
-
     local a = Map:getTilePosition(self.indices.x, self.indices.y)
     local b = Map:getTilePosition(i, j)
 
