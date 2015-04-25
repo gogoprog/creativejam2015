@@ -112,7 +112,7 @@ function Game.onStateEnter:winning()
     local e = Factory:createFireworkParticle()
     e:insert()
 
-    Audio:playSound("win")
+    Audio:playSound("win", 1, 0.3)
 end
 
 function Game.onStateUpdate:winning(dt)
