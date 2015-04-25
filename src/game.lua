@@ -103,7 +103,6 @@ function Game.onStateExit:playing()
     self.itIsPlayable = false
 end
 
-
 function Game.onStateEnter:winning()
     self.time = 2
 end
@@ -119,6 +118,23 @@ function Game.onStateUpdate:winning(dt)
 end
 
 function Game.onStateExit:winning()
+end
+
+function Game.onStateEnter:losing()
+    self.time = 2
+end
+
+function Game.onStateUpdate:losing(dt)
+    self.time = self.time - dt
+
+    self.player.rotation = self.player.rotation + dt * 10
+
+    if self.time < 0 then
+        Application:goToMenu()
+    end
+end
+
+function Game.onStateExit:losing()
 end
 
 function Game:isRunning()
@@ -189,6 +205,9 @@ end
 
 function Game:addLife( value )
     self.numberOfLife = self.numberOfLife + value
+    if self.numberOfLife <= 0 then
+        self:changeState("losing")
+    end
 end
 
 function Game:getLife()
