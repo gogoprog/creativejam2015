@@ -117,6 +117,8 @@ end
 function Game.onStateUpdate:winning(dt)
     self.time = self.time - dt
 
+    self.player.rotation = self.player.rotation + dt * 10
+
     if self.time < 0 then
         self:nextLevel()
     end
