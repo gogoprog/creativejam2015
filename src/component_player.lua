@@ -34,12 +34,18 @@ function ComponentPlayer.onStateEnter:idling()
         Game:addGlasses(1)
         Map:removeGlasses(i, j)
         Audio:playSound("bonus", 5, 0.1)
+        local e = Factory:createBonusParticles()
+        -- e.position = self.indices
+        e:insert()
     end
 
     if Map:isLife(i, j) then
         Game:addLife(1)
         Map:removeLife(i, j)
         Audio:playSound("bonus", 5, 0.1)
+        local e = Factory:createBonusParticles()
+        -- e.position = self.indices
+        e:insert()
     end
 end
 

@@ -212,10 +212,6 @@ end
 function Game:addGlasses( value )
     self.numberOfGlasses = self.numberOfGlasses + value
     gengine.gui.executeScript("updateGlasses("..self.numberOfGlasses..")")
-    
-    local e = Factory:createBonusParticles()
-    e.position = self.player.position
-    e:insert()
 end
 
 function Game:getNumberOfGlasses()
@@ -228,10 +224,6 @@ function Game:addLife( value )
         self:changeState("losing")
     end
     gengine.gui.executeScript("updateLife("..self.numberOfLife..")")
-
-    local e = Factory:createBonusParticles()
-    e.position = self.player.position
-    e:insert()
 end
 
 function Game:getLife()

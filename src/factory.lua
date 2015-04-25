@@ -339,7 +339,7 @@ function Factory:createFireworkParticle()
 end
 
 function Factory:createBonusParticles()
-  local e = self:pickFromPool(self.bonusParticles)
+    local e = self:pickFromPool(self.bonusParticles)
 
     if not e then
         e = gengine.entity.create()
@@ -364,7 +364,8 @@ function Factory:createBonusParticles()
             },
             "particle"
             )
-             e:addComponent(
+        
+        e:addComponent(
             ComponentPoolable(),
             {
                 pool = self.bonusParticles
