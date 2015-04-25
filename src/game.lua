@@ -105,6 +105,9 @@ end
 
 function Game.onStateEnter:winning()
     self.time = 2
+
+    local e = Factory:createFireworkParticle()
+    e:insert()
 end
 
 function Game.onStateUpdate:winning(dt)

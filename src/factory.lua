@@ -226,8 +226,10 @@ function Factory:createFireworkParticle()
                 spinRange = {0, 1},
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
-                colors = {vector4(0.8,0.8,0.9,1), vector4(0.3,0.3,0.9,1), vector4(0,0,0,0)}
-            }
+                colors = {vector4(0.8,0.8,0.9,1), vector4(0.3,0.3,0.9,1), vector4(0,0,0,0)},
+                layer = 1000
+            },
+            "p1"
             )
 
          e:addComponent(
@@ -245,8 +247,10 @@ function Factory:createFireworkParticle()
                 spinRange = {0, 1},
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
-                colors = {vector4(0.3,0.8,0.4,1), vector4(0.3,0.6,0.6,1), vector4(0,0,0,0)}
-            }
+                colors = {vector4(0.3,0.8,0.4,1), vector4(0.3,0.6,0.6,1), vector4(0,0,0,0)},
+                layer = 1000
+            },
+            "p2"
             )
 
         e:addComponent(
@@ -264,8 +268,10 @@ function Factory:createFireworkParticle()
                 spinRange = {0, 1},
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
-                colors = {vector4(0.8,0.3,0.4,1), vector4(0.9,0.6,0.3,1), vector4(0,0,0,0)}
-            }
+                colors = {vector4(0.8,0.3,0.4,1), vector4(0.9,0.6,0.3,1), vector4(0,0,0,0)},
+                layer = 1000
+            },
+            "p3"
             )
 
 
@@ -284,9 +290,12 @@ function Factory:createFireworkParticle()
                 spinRange = {0, 1},
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
-                colors = {vector4(0.8,0.1,0.1,1), vector4(1,1,0,1), vector4(0,0,0,0)}
-            }
+                colors = {vector4(0.8,0.1,0.1,1), vector4(1,1,0,1), vector4(0,0,0,0)},
+                layer = 1000
+            },
+            "p4"
             )
+
          e:addComponent(
             ComponentPoolable(),
             {
@@ -302,8 +311,11 @@ function Factory:createFireworkParticle()
             )
 
         end
-    
-    e.particle:reset()
+
+    e.p1:reset()
+    e.p2:reset()
+    e.p3:reset()
+    e.p4:reset()
 
     return e
 end
