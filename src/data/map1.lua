@@ -26,13 +26,19 @@ return {
       tiles = {
         {
           id = 0,
-          image = "obstacle.png",
+          image = "start.png",
           width = 96,
           height = 96
         },
         {
           id = 1,
-          image = "valid.png",
+          image = "end.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 2,
+          image = "obstacle.png",
           width = 96,
           height = 96
         }
@@ -52,12 +58,12 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 0, 1, 0, 0, 0,
-        0, 0, 1, 0, 0, 0,
-        1, 1, 1, 0, 0, 0,
+        1, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0,
+        3, 3, 3, 3, 0, 0,
         0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0
+        0, 0, 0, 0, 0, 2
       }
     }
   }
