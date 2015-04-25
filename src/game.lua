@@ -130,6 +130,7 @@ function Game.onStateUpdate:losing(dt)
     self.player.rotation = self.player.rotation + dt * 10
 
     if self.time < 0 then
+        self:changeState("none")
         Application:goToMenu()
     end
 end
