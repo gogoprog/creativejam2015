@@ -25,7 +25,7 @@ function ComponentPlayer.onStateEnter:idling()
     self.entity.sprite:pushAnimation(Factory.animations.idle)
 
     if self.indices == Map.endPositionIndices then
-        Game:changeState("winning")
+        Game:win()
     end
 
     local i, j = self.indices.x, self.indices.y

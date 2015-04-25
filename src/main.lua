@@ -8,7 +8,6 @@ function init()
     gengine.application.setFullscreen(false)
 end
 
-
 function start()
     Audio:init()
 

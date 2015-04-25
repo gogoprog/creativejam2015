@@ -56,3 +56,13 @@ function Application:goToMenu()
     Application.guiFadeFunction = function(self) self:changeState('menu') end
     self:showPage('menu', 500)
 end
+
+function Application:transition()
+    Application.guiFadeFunction = function(self) Game:changeState('transitionning') end
+    self:showPage('hud', 250)
+end
+
+function Application:toNextLevel()
+    Application.guiFadeFunction = function(self) Game:nextLevel() end
+    self:showPage('hud', 250)
+end

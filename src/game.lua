@@ -17,6 +17,8 @@ function Game:init(dt)
     self.camera:insert()
 
     self.ground = Factory:createSprite("grass", 850, 850, 10)
+    self.blackSight = Factory:createSprite("black_sight", 850, 850, 1000)
+    self.goal = Factory:createSprite("goal", 850, 850, 999)
     self.underground = Factory:createSprite("underground", 850, 850, -10)
     self.player = Factory:createPlayer()
     self.hole = Factory:createHole()
@@ -37,6 +39,7 @@ function Game:finalize()
 
     gengine.entity.destroy(self.camera)
     gengine.entity.destroy(self.ground)
+    gengine.entity.destroy(self.blackSight)
     gengine.entity.destroy(self.underground)
     gengine.entity.destroy(self.player)
     gengine.entity.destroy(self.hole)
@@ -112,7 +115,6 @@ function Game.onStateEnter:winning()
     local e = Factory:createFireworkParticle()
     e:insert()
 
-    Audio:playSound("win", 2, 0.3)
 end
 
 function Game.onStateUpdate:winning(dt)
@@ -122,10 +124,35 @@ function Game.onStateUpdate:winning(dt)
 
     if self.time < 0 then
         self:nextLevel()
+        self:changeState("none")
+        Application:transition()
     end
 end
 
 function Game.onStateExit:winning()
+end
+
+function Game.onStateEnter:transitionning()
+    self.blackSight:insert()
+    self.goal:insert()
+    self.goal.sprite.extent = vector2(850,850) * ( 1 + (self.currentLevel-1) * 0.2)
+    self.time = 2
+    self.done = false
+end
+
+function Game.onStateUpdate:transitionning(dt)
+    self.time = self.time - dt
+
+    if self.time < 0 and not self.done then
+        self:changeState("none")
+        Application:toNextLevel()
+        self.done = true
+    end
+end
+
+function Game.onStateExit:transitionning()
+    self.goal:remove()
+    self.blackSight:remove()
 end
 
 function Game.onStateEnter:losing()
@@ -228,4 +255,10 @@ end
 
 function Game:getLife()
     return self.numberOfLife
+end
+
+function Game:win()
+    Audio:playSound("win", 2, 0.3)
+
+    Application:transition()
 end
