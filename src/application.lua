@@ -28,7 +28,7 @@ end
 
 function Application.onStateEnter:inGame()
     Game:init()
-    Game:changeState("running")
+    Game:start()
 end
 
 function Application.onStateUpdate:inGame(dt)
@@ -36,6 +36,7 @@ function Application.onStateUpdate:inGame(dt)
 end
 
 function Application.onStateExit:inGame()
+    Game:stop()
     Game:finalize()
 end
 
