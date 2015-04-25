@@ -5,11 +5,12 @@ function ComponentAutoRemove:init()
 end
 
 function ComponentAutoRemove:insert()
+    self.timeLeft = self.duration
 end
 
 function ComponentAutoRemove:update(dt)
-    self.duration = self.duration - dt
-    if self.duration < 0 then
+    self.timeLeft = self.timeLeft - dt
+    if self.timeLeft < 0 then
         self.entity:remove()
     end
 end
