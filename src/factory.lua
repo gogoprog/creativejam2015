@@ -90,3 +90,29 @@ function Factory:createObstacle(i, j, texture)
 
     return e
 end
+
+function Factory:createCollisionParticle()
+    local e = gengine.entity.create()
+
+    e:addComponent(
+        ComponentParticleSystem(),
+        {
+            texture = gengine.graphics.texture.get("star_particle"),
+            size = 50,
+            emitterRate = 10,
+            emitterLifeTime = 1.5,
+            extentRange = {vector2(32,32), vector2(34,34)},
+            lifeTimeRange = {0.5, 1},
+            directionRange = {2*3.14, 3*3.14},
+            speedRange = {10, 100},
+            rotationRange = {0, 0},
+            spinRange = {-10, 10},
+            linearAccelerationRange = {vector2(0,0), vector2(0,0)},
+            scales = {vector2(1, 1)},
+            colors = {vector4(0.8,0.8,0,1), vector4(1,1,0,1), vector4(0,0,0,0)}
+        }
+        )
+
+    e:insert()
+    return e
+end
