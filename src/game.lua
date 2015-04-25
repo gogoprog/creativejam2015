@@ -162,7 +162,6 @@ function Game:start(lvl)
     self.player:insert()
     self.hole:insert()
 
-
     self:changeState("wait")
 end
 
