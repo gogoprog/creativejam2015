@@ -1,5 +1,6 @@
 require 'component_poolable'
 require 'component_box'
+require 'component_player'
 
 Factory = Factory or {
     objects = {}
@@ -131,5 +132,39 @@ function Factory:createCollisionParticle()
         )
 
     e:insert()
+    return e
+end
+
+function Factory:createPlayer()
+    e = gengine.entity.create()
+ 
+    e:addComponent(
+        ComponentSprite(),
+        {
+            layer = 100,
+            texture = gengine.graphics.texture.get("taupe"),
+            color = vector4(0.9, 0.9, 0.9, 0.8)
+        },
+        "sprite"
+        )
+
+     e:addComponent(
+        ComponentSprite(),
+        {
+            layer = 99,
+            texture = gengine.graphics.texture.get("hole"),
+            color = vector4(0.9, 0.9, 0.9, 0.8),
+            extent = vector2(200, 200)
+        },
+        "hole"
+        )
+ 
+    e:addComponent(
+        ComponentPlayer(),
+        {
+        },
+        "player"
+        )
+
     return e
 end

@@ -14,6 +14,7 @@ function Game:init(dt)
 
     self.ground = Factory:createSprite("grass", 800, 800, 10)
     self.underground = Factory:createSprite("underground", 800, 800, -10)
+    self.player = Factory:createPlayer()
 end
 
 function Game:finalize()
@@ -27,10 +28,12 @@ function Game:finalize()
     self.camera:remove()
     self.ground:remove()
     self.underground:remove()
+    self.player:remove()
 
     gengine.entity.destroy(self.camera)
     gengine.entity.destroy(self.ground)
     gengine.entity.destroy(self.underground)
+    gengine.entity.destroy(self.player)
 end
 
 function Game:update(dt)
@@ -49,6 +52,11 @@ end
 function Game.onStateEnter:video()
     self.timeLeft = 1.0
     self.ground:insert()
+
+    local indices = Map.startPositionIndices
+    self.player.position:set(Map:getTilePosition(indices.x, indices.y))
+    self.player.player.indices = indices
+    self.player:insert()
 end
 
 function Game.onStateUpdate:video(dt)
@@ -83,15 +91,21 @@ function Game.onStateExit:blinking()
 end
 
 function Game.onStateEnter:playing()
+    self.itIsPlayable = true
 end
 
 function Game.onStateUpdate:playing(dt)
     if gengine.input.keyboard:isJustUp(41) then
         Application:goToMenu()
     end
+
+    if gengine.input.keyboard:isJustDown(5) then
+        self:changeState("blinking")
+    end
 end
 
 function Game.onStateExit:playing()
+    self.itIsPlayable = false
 end
 
 function Game:isRunning()

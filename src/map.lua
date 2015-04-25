@@ -9,10 +9,6 @@ gengine.stateMachine(Map)
 
 function Map:init()
     self:loadFile("data/map1.lua")
-
-    for i=1,6 do
-        self.blocks[i] = {0, 0, 0, 0, 0, 0}
-    end
 end
 
 function Map:finalize()
@@ -30,7 +26,7 @@ local textures = {
 
 function Map:loadFile(filename)
     for i=1,6 do
-        self.blocks[i] = {0, 0, 0, 0, 0, 0}
+        self.blocks[i] = {false, false, false, false, false, false}
     end
 
     local map = dofile(filename)
@@ -51,9 +47,9 @@ function Map:loadFile(filename)
             b:insert()
 
             if v == 1 then
-                -- start
+                self.startPositionIndices = vector2(x, y)
             elseif v == 2 then
-                -- stop
+                self.endPositionIndices = vector2(x, y)
             else
                 self:addObstacle(x, y)
             end
@@ -67,4 +63,15 @@ end
 
 function Map:addObstacle(x, y)
     self.blocks[x][y] = true
+end
+
+function Map:getTilePosition(i, j)
+    return vector2(i * 96 - 96*3.5, j * 96 - 96*3.5)
+end
+
+function Map:isBlocking(i, j)
+    if i < 1 or i > 6 or j < 1 or j > 6 then
+        return true
+    end
+    return self.blocks[i][j]
 end

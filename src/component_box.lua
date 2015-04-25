@@ -15,5 +15,5 @@ function ComponentBox:remove()
 end
 
 function ComponentBox:setPosition(i, j)
-    self.entity.position:set(i * 96 - 96*3.5, j * 96 - 96*3.5)
+    self.entity.position:set(Map:getTilePosition(i,j))
 end
