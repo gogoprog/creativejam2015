@@ -22,6 +22,37 @@ end
 
 function Factory:init()
     gengine.graphics.texture.createFromDirectory("data/")
+
+    local atlas
+
+    atlas = gengine.graphics.atlas.create(
+        "dig",
+        gengine.graphics.texture.get("dig"),
+        1,
+        7
+        )
+
+    self.animations = {}
+
+    self.animations.dig = gengine.graphics.animation.create(
+        "dig",
+        {
+            atlas = atlas,
+            frames = { 0, 1, 2, 3, 4, 5, 6 },
+            framerate = 16,
+            loop = true
+        }
+        )
+
+    self.animations.idle = gengine.graphics.animation.create(
+        "idle",
+        {
+            atlas = atlas,
+            frames = { 5 },
+            framerate = 16,
+            loop = true
+        }
+        )
 end
 
 function Factory:finalize()
@@ -265,13 +296,12 @@ end
 
 function Factory:createPlayer()
     local e = gengine.entity.create()
- 
+
     e:addComponent(
-        ComponentSprite(),
+        ComponentAnimatedSprite(),
         {
-            layer = 100,
-            texture = gengine.graphics.texture.get("taupe"),
-            color = vector4(0.9, 0.9, 0.9, 0.8)
+            animation = self.animations.idle,
+            layer = 100
         },
         "sprite"
         )

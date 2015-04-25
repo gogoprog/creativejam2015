@@ -3,7 +3,7 @@ require 'map'
 
 Game = Game or {
     objects = {},
-    mapCount = 2
+    mapCount = 4
 }
 
 gengine.stateMachine(Game)
@@ -76,7 +76,7 @@ end
 function Game.onStateUpdate:blinking(dt)
     self.time = self.time + dt
 
-    local value = math.cos(self.time * 10) / 2 + 0.5
+    local value = math.cos(self.time * 2) / 2 + 0.5
 
     self.ground.sprite.color = vector4(1,1,1, value)
     self.hole.sprite.color = vector4(1,1,1, value)

@@ -20,6 +20,10 @@ function ComponentPlayer:remove()
 end
 
 function ComponentPlayer.onStateEnter:idling()
+
+    self.entity.sprite:removeAnimations()
+    self.entity.sprite:pushAnimation(Factory.animations.idle)
+
     if self.indices == Map.endPositionIndices then
         Game:changeState("winning")
     end
@@ -62,6 +66,9 @@ function ComponentPlayer.onStateExit:idling()
 end
 
 function ComponentPlayer.onStateEnter:moving()
+    self.entity.sprite:removeAnimations()
+    self.entity.sprite:pushAnimation(Factory.animations.dig)
+
     self.time = 0
     self.duration = 0.5
 
