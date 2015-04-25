@@ -179,7 +179,7 @@ function Factory:createCollisionParticle()
                 spinRange = {-10, 10},
                 linearAccelerationRange = {vector2(0,0), vector2(0,0)},
                 scales = {vector2(1, 1)},
-                colors = {vector4(0.8,0.8,0,1), vector4(1,1,0,1), vector4(0,0,0,0)},
+                colors = {vector4(1,0,0,1), vector4(0.8,0,0,0.8), vector4(0,0,0,0)},
                 layer = 1000
             },
             "particle"
