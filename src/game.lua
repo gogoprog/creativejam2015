@@ -23,7 +23,7 @@ function Game:init(dt)
     self.numberOfGlasses = 1
     gengine.gui.executeScript("updateGlasses("..self.numberOfGlasses..")")
     self.numberOfLife = 3
-    gengine.gui.executeScript("updateLife("..self.numberOfLife..")")    
+    gengine.gui.executeScript("updateLife("..self.numberOfLife..")") 
 end
 
 function Game:finalize()
@@ -152,6 +152,8 @@ function Game:start(lvl)
     self.itIsRunning = true
 
     self.currentLevel = lvl or 1
+    gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
+    print("here : "..self.currentLevel)
 
     self:loadLevel()
 
