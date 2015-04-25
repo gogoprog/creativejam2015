@@ -189,6 +189,8 @@ function Game:nextLevel()
         self.currentLevel = 1
     end
     self:loadLevel()
+    gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
+
 end
 
 function Game:loadLevel()
