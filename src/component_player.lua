@@ -1,4 +1,6 @@
-ComponentPlayer = {}
+ComponentPlayer = {
+    startMousePosition = nil
+}
 
 gengine.stateMachine(ComponentPlayer)
 
@@ -26,6 +28,8 @@ end
 function ComponentPlayer.onStateUpdate:idling(dt)
     if Game.itIsPlayable then
         local keyboard = gengine.input.keyboard
+        local mouse = gengine.input.mouse
+        local start_position = vector2( 0, 0 )
 
         if keyboard:isDown(79) then
             self:tryMove(self.indices.x + 1, self.indices.y)
@@ -35,6 +39,21 @@ function ComponentPlayer.onStateUpdate:idling(dt)
             self:tryMove(self.indices.x, self.indices.y - 1)
         elseif keyboard:isDown(82) then
             self:tryMove(self.indices.x, self.indices.y + 1)
+        end
+
+        if mouse:isJustDown(1) then
+            startMousePosition = mouse:getPosition() 
+        end
+        if mouse:isDown(1) then 
+            if startMousePosition.x < mouse:getPosition(1).x and mouse:getPosition(1).x - startMousePosition.x > 100 then 
+                self:tryMove(self.indices.x + 1, self.indices.y)
+            elseif startMousePosition.x > mouse:getPosition(1).x and startMousePosition.x - mouse:getPosition(1).x > 100 then  
+                self:tryMove(self.indices.x - 1, self.indices.y)
+            elseif startMousePosition.y < mouse:getPosition(1).y and mouse:getPosition(1).y - startMousePosition.y > 100 then  
+                self:tryMove(self.indices.x, self.indices.y - 1)
+            elseif startMousePosition.y > mouse:getPosition(1).y and startMousePosition.y - mouse:getPosition(1).y > 100 then 
+                self:tryMove(self.indices.x, self.indices.y + 1)
+            end
         end
     end
 end
