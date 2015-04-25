@@ -15,25 +15,23 @@ function Game:init(dt)
     self.ground = Factory:createSprite("grass", 800, 800, 10)
     self.underground = Factory:createSprite("underground", 800, 800, -10)
     self.player = Factory:createPlayer()
+    self.hole = Factory:createHole()
 end
 
 function Game:finalize()
     for k, v in ipairs(self.objects) do
-        v:remove()
+        gengine.entity.destroy(v)
     end
 
     self.objects = {}
 
     Factory:finalize()
-    self.camera:remove()
-    self.ground:remove()
-    self.underground:remove()
-    self.player:remove()
 
     gengine.entity.destroy(self.camera)
     gengine.entity.destroy(self.ground)
     gengine.entity.destroy(self.underground)
     gengine.entity.destroy(self.player)
+    gengine.entity.destroy(self.hole)
 end
 
 function Game:update(dt)
@@ -57,6 +55,9 @@ function Game.onStateEnter:video()
     self.player.position:set(Map:getTilePosition(indices.x, indices.y))
     self.player.player.indices = indices
     self.player:insert()
+
+    self.hole.position = self.player.position
+    self.hole:insert()
 end
 
 function Game.onStateUpdate:video(dt)
@@ -72,7 +73,6 @@ end
 
 function Game.onStateEnter:blinking()
     self.time = 0
-    self.underground:insert()
 end
 
 function Game.onStateUpdate:blinking(dt)
@@ -81,6 +81,7 @@ function Game.onStateUpdate:blinking(dt)
     local value = math.cos(self.time * 10) / 2 + 0.5
 
     self.ground.sprite.color = vector4(1,1,1, value)
+    self.hole.sprite.color = vector4(1,1,1, value)
 
     if self.time > 1 and value > 0.99 then
         self:changeState("playing")
@@ -95,6 +96,10 @@ function Game.onStateEnter:playing()
 end
 
 function Game.onStateUpdate:playing(dt)
+
+    self.hole.position = self.player.position
+
+
     if gengine.input.keyboard:isJustUp(41) then
         Application:goToMenu()
     end
@@ -116,6 +121,8 @@ function Game:start()
     self.itIsRunning = true
     Map:init()
     self:changeState("video")
+
+    self.underground:insert()
 end
 
 function Game:stop()
@@ -123,4 +130,14 @@ function Game:stop()
 
     self.itIsRunning = false
     Map:finalize()
+
+    for k, v in ipairs(self.objects) do
+        v:remove()
+    end
+
+    self.camera:remove()
+    self.ground:remove()
+    self.underground:remove()
+    self.player:remove()
+    self.hole:remove()
 end

@@ -136,7 +136,7 @@ function Factory:createCollisionParticle()
 end
 
 function Factory:createPlayer()
-    e = gengine.entity.create()
+    local e = gengine.entity.create()
  
     e:addComponent(
         ComponentSprite(),
@@ -147,8 +147,21 @@ function Factory:createPlayer()
         },
         "sprite"
         )
+ 
+    e:addComponent(
+        ComponentPlayer(),
+        {
+        },
+        "player"
+        )
 
-     e:addComponent(
+    return e
+end
+
+function Factory:createHole()
+    local e = gengine.entity.create()
+
+    e:addComponent(
         ComponentSprite(),
         {
             layer = 99,
@@ -156,14 +169,7 @@ function Factory:createPlayer()
             color = vector4(0.9, 0.9, 0.9, 0.8),
             extent = vector2(200, 200)
         },
-        "hole"
-        )
- 
-    e:addComponent(
-        ComponentPlayer(),
-        {
-        },
-        "player"
+        "sprite"
         )
 
     return e

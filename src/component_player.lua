@@ -48,10 +48,6 @@ function ComponentPlayer.onStateEnter:moving()
 
     self.startPosition = Map:getTilePosition(self.indices.x, self.indices.y)
     self.endPosition = Map:getTilePosition(self.target.x, self.target.y)
-
-    local angle = gengine.math.getAngle(self.endPosition, self.startPosition)
-
-    self.entity.rotation = angle + math.pi * 0.5
 end
 
 function ComponentPlayer.onStateUpdate:moving(dt)
@@ -79,6 +75,14 @@ function ComponentPlayer.onStateExit:moving()
 end
 
 function ComponentPlayer:tryMove(i, j)
+
+    local a = Map:getTilePosition(self.indices.x, self.indices.y)
+    local b = Map:getTilePosition(i, j)
+
+    local angle = gengine.math.getAngle(b, a)
+
+    self.entity.rotation = angle + math.pi * 0.5
+
     if not Map:isBlocking(i, j) then
         self.target = vector2(i, j)
         self:changeState("moving")
