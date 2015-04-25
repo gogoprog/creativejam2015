@@ -60,3 +60,8 @@ function updateObjects(count)
 {
     $("#objects").html(count);
 }
+
+function updateLife(count)
+{
+    $("#life").html(count);
+}
