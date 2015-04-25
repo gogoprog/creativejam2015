@@ -3,7 +3,7 @@ require 'map'
 
 Game = Game or {
     objects = {},
-    mapCount = 1
+    mapCount = 2
 }
 
 gengine.stateMachine(Game)
@@ -95,7 +95,6 @@ end
 
 function Game.onStateUpdate:playing(dt)
     self.hole.position = self.player.position
-
 
     if gengine.input.keyboard:isJustUp(41) then
         Application:goToMenu()
