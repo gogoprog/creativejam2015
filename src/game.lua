@@ -131,11 +131,8 @@ function Game:start(lvl)
     self.itIsRunning = true
 
     self.currentLevel = lvl or 1
-    Map:init(self.currentLevel)
 
-    local indices = Map.startPositionIndices
-    self.player.position:set(Map:getTilePosition(indices.x, indices.y))
-    self.player.player.indices = indices
+    self:loadLevel()
 
     self.hole.position = self.player.position
 
@@ -171,7 +168,15 @@ function Game:nextLevel()
     if self.currentLevel > self.mapCount then
         self.currentLevel = 1
     end
+    self:loadLevel()
+end
+
+function Game:loadLevel()
     Map:init(self.currentLevel)
+
+    local indices = Map.startPositionIndices
+    self.player.position:set(Map:getTilePosition(indices.x, indices.y))
+    self.player.player.indices = indices
 
     self:changeState("video")
 end
