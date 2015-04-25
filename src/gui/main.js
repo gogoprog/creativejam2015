@@ -65,3 +65,8 @@ function updateLife(count)
 {
     $("#life").html(count);
 }
+
+function updateGlasses(count)
+{
+    $("glasses").html(count);
+}

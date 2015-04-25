@@ -209,6 +209,7 @@ function Game:addLife( value )
     if self.numberOfLife <= 0 then
         self:changeState("losing")
     end
+    gengine.gui.executeScript("updateLife("..self.numberOfLife..")")
 end
 
 function Game:getLife()
