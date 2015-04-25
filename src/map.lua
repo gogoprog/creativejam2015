@@ -41,10 +41,12 @@ function Map:loadFile(filename)
             local y = (h - math.floor((k-1)/w))
             local b
 
-            b = Factory:createObstacle(x, y, textures[v])
-            table.insert(self.obstacles, b)
+            if v ~= 1 then
+                b = Factory:createObstacle(x, y, textures[v])
+                table.insert(self.obstacles, b)
 
-            b:insert()
+                b:insert()
+            end
 
             if v == 1 then
                 self.startPositionIndices = vector2(x, y)

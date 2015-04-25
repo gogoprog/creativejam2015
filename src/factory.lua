@@ -1,9 +1,11 @@
 require 'component_poolable'
 require 'component_box'
 require 'component_player'
+require 'component_auto_remove'
 
 Factory = Factory or {
-    objects = {}
+    objects = {},
+    collisionParticles = {}
 }
 
 function Factory:pickFromPool(t)
@@ -110,28 +112,49 @@ function Factory:createObstacle(i, j, texture)
 end
 
 function Factory:createCollisionParticle()
-    local e = gengine.entity.create()
+    local e = self:pickFromPool(self.objects)
 
-    e:addComponent(
-        ComponentParticleSystem(),
-        {
-            texture = gengine.graphics.texture.get("star_particle"),
-            size = 50,
-            emitterRate = 10,
-            emitterLifeTime = 1.5,
-            extentRange = {vector2(32,32), vector2(34,34)},
-            lifeTimeRange = {0.5, 1},
-            directionRange = {2*3.14, 3*3.14},
-            speedRange = {10, 100},
-            rotationRange = {0, 0},
-            spinRange = {-10, 10},
-            linearAccelerationRange = {vector2(0,0), vector2(0,0)},
-            scales = {vector2(1, 1)},
-            colors = {vector4(0.8,0.8,0,1), vector4(1,1,0,1), vector4(0,0,0,0)}
-        }
-        )
+    if not e then
+        e = gengine.entity.create()
 
-    e:insert()
+        e:addComponent(
+            ComponentParticleSystem(),
+            {
+                texture = gengine.graphics.texture.get("star_particle"),
+                size = 50,
+                emitterRate = 10,
+                emitterLifeTime = 1.5,
+                extentRange = {vector2(32,32), vector2(34,34)},
+                lifeTimeRange = {0.5, 1},
+                directionRange = {2*3.14, 3*3.14},
+                speedRange = {10, 100},
+                rotationRange = {0, 0},
+                spinRange = {-10, 10},
+                linearAccelerationRange = {vector2(0,0), vector2(0,0)},
+                scales = {vector2(1, 1)},
+                colors = {vector4(0.8,0.8,0,1), vector4(1,1,0,1), vector4(0,0,0,0)},
+                layer = 1000
+            },
+            "particle"
+            )
+
+        e:addComponent(
+            ComponentPoolable(),
+            {
+                pool = self.collisionParticles
+            }
+            )
+
+        e:addComponent(
+            ComponentAutoRemove(),
+            {
+               duration = 2
+            }
+            )
+    end
+
+    e.particle:reset()
+
     return e
 end
 

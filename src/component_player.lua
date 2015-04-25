@@ -83,5 +83,9 @@ function ComponentPlayer:tryMove(i, j)
     if not Map:isBlocking(i, j) then
         self.target = vector2(i, j)
         self:changeState("moving")
+    else
+        local e = Factory:createCollisionParticle()
+        e.position = b
+        e:insert()
     end
 end

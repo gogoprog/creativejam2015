@@ -49,15 +49,12 @@ end
 
 function Game.onStateEnter:video()
     self.timeLeft = 1.0
-    self.ground:insert()
 
     local indices = Map.startPositionIndices
     self.player.position:set(Map:getTilePosition(indices.x, indices.y))
     self.player.player.indices = indices
-    self.player:insert()
 
     self.hole.position = self.player.position
-    self.hole:insert()
 end
 
 function Game.onStateUpdate:video(dt)
@@ -113,6 +110,16 @@ function Game.onStateExit:playing()
     self.itIsPlayable = false
 end
 
+
+function Game.onStateEnter:winning()
+end
+
+function Game.onStateUpdate:winning(dt)
+end
+
+function Game.onStateExit:winning()
+end
+
 function Game:isRunning()
     return self.itIsRunning
 end
@@ -123,6 +130,9 @@ function Game:start()
     self:changeState("video")
 
     self.underground:insert()
+    self.ground:insert()
+    self.player:insert()
+    self.hole:insert()
 end
 
 function Game:stop()
