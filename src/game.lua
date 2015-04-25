@@ -190,3 +190,7 @@ end
 function Game:addLife( value )
     self.numberOfLife = self.numberOfLife + value
 end
+
+function Game:getLife()
+    return self.numberOfLife
+end
