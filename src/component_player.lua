@@ -26,14 +26,11 @@ function ComponentPlayer.onStateUpdate:idling(dt)
 
         if keyboard:isDown(79) then
             self:tryMove(self.indices.x + 1, self.indices.y)
-        end
-        if keyboard:isDown(80) then
+        elseif keyboard:isDown(80) then
             self:tryMove(self.indices.x - 1, self.indices.y)
-        end
-        if keyboard:isDown(81) then
+        elseif keyboard:isDown(81) then
             self:tryMove(self.indices.x, self.indices.y - 1)
-        end
-        if keyboard:isDown(82) then
+        elseif keyboard:isDown(82) then
             self:tryMove(self.indices.x, self.indices.y + 1)
         end
     end
