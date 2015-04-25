@@ -2,7 +2,6 @@ require 'factory'
 require 'map'
 
 Game = Game or {
-    objects = {},
     mapCount = 12,
     numberOfGlasses = 1,
     numberOfLife = 3
@@ -12,6 +11,7 @@ gengine.stateMachine(Game)
 
 function Game:init(dt)
     gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
+
     self.camera = Factory:createCamera()
     self.camera:insert()
 
@@ -21,22 +21,19 @@ function Game:init(dt)
     self.underground = Factory:createSprite("underground", 850, 850, -10)
     self.player = Factory:createPlayer()
     self.hole = Factory:createHole()
+
     self.numberOfGlasses = 1
-    gengine.gui.executeScript("updateGlasses("..self.numberOfGlasses..")")
     self.numberOfLife = 3
+
+    gengine.gui.executeScript("updateGlasses("..self.numberOfGlasses..")")
     gengine.gui.executeScript("updateLife("..self.numberOfLife..")") 
 end
 
 function Game:finalize()
-    for k, v in ipairs(self.objects) do
-        gengine.entity.destroy(v)
-    end
-
-    self.objects = {}
-
     gengine.entity.destroy(self.camera)
     gengine.entity.destroy(self.ground)
     gengine.entity.destroy(self.blackSight)
+    gengine.entity.destroy(self.goal)
     gengine.entity.destroy(self.underground)
     gengine.entity.destroy(self.player)
     gengine.entity.destroy(self.hole)
@@ -98,6 +95,7 @@ function Game.onStateUpdate:playing(dt)
     self.hole.position = self.player.position
 
     if gengine.input.keyboard:isJustUp(41) then
+        self:changeState("none")
         Application:goToMenu()
     end
 end
@@ -197,10 +195,6 @@ function Game:stop()
 
     self.itIsRunning = false
     Map:finalize()
-
-    for k, v in ipairs(self.objects) do
-        v:remove()
-    end
 
     self.camera:remove()
     self.ground:remove()
