@@ -44,7 +44,6 @@ function Map:loadFile(filename)
 
             b = Factory:createObstacle(x, y, textures[v])
             table.insert(self.obstacles, b)
-            print(x .. y)
 
             b:insert()
 
