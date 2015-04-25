@@ -18,6 +18,9 @@ function ComponentPlayer:remove()
 end
 
 function ComponentPlayer.onStateEnter:idling()
+    if self.indices == Map.endPositionIndices then
+        Game:changeState("winning")
+    end
 end
 
 function ComponentPlayer.onStateUpdate:idling(dt)

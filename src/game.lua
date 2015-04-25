@@ -2,7 +2,8 @@ require 'factory'
 require 'map'
 
 Game = Game or {
-    objects = {}
+    objects = {},
+    mapCount = 1
 }
 
 gengine.stateMachine(Game)
@@ -93,7 +94,6 @@ function Game.onStateEnter:playing()
 end
 
 function Game.onStateUpdate:playing(dt)
-
     self.hole.position = self.player.position
 
 
@@ -112,9 +112,15 @@ end
 
 
 function Game.onStateEnter:winning()
+    self.time = 2
 end
 
 function Game.onStateUpdate:winning(dt)
+    self.time = self.time - dt
+
+    if self.time < 0 then
+        self:nextLevel()
+    end
 end
 
 function Game.onStateExit:winning()
@@ -124,15 +130,17 @@ function Game:isRunning()
     return self.itIsRunning
 end
 
-function Game:start()
+function Game:start(lvl)
     self.itIsRunning = true
-    Map:init()
-    self:changeState("video")
 
     self.underground:insert()
     self.ground:insert()
     self.player:insert()
     self.hole:insert()
+
+    self.currentLevel = lvl or 1
+    Map:init(self.currentLevel)
+    self:changeState("video")
 end
 
 function Game:stop()
@@ -150,4 +158,15 @@ function Game:stop()
     self.underground:remove()
     self.player:remove()
     self.hole:remove()
+end
+
+function Game:nextLevel()
+    Map:finalize()
+    self.currentLevel = self.currentLevel + 1
+    if self.currentLevel > self.mapCount then
+        self.currentLevel = 1
+    end
+    Map:init(self.currentLevel)
+
+    self:changeState("video")
 end

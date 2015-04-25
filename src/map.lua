@@ -7,8 +7,8 @@ Map = Map or {
 
 gengine.stateMachine(Map)
 
-function Map:init()
-    self:loadFile("data/map1.lua")
+function Map:init(lvl)
+    self:loadFile("data/map" .. lvl .. ".lua")
 end
 
 function Map:finalize()
