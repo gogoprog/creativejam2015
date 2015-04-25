@@ -74,7 +74,7 @@ function ComponentPlayer.onStateUpdate:idling(dt)
         end
     end
 
-    if gengine.input.keyboard:isJustDown(5) and Game:getNumberOfGlasses() > 0 then
+    if ( gengine.input.keyboard:isJustDown(5) or gengine.input.mouse:isJustDown(3) ) and Game:getNumberOfGlasses() > 0 then
         Game:changeState("blinking")
         Game:addGlasses(-1)
     end
