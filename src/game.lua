@@ -120,6 +120,7 @@ function Game.onStateEnter:winning()
 
     self.player.sprite:removeAnimations()
     self.player.sprite:pushAnimation(Factory.animations.periscope)
+    self.player.rotation = 0
 
     self.hole:remove()
 end
