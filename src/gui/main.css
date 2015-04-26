@@ -72,3 +72,9 @@ input[type="checkbox"]{
     width:32px;
     height:32px;
 }
+
+#slider {
+    display:inline-block;
+    font-size:20px;
+    width:50%;
+}

@@ -2,6 +2,7 @@ require 'factory'
 require 'map'
 
 Game = Game or {
+    startLevel = 0,
     mapCount = 18,
     numberOfGlasses = 1,
     numberOfLife = 3
@@ -198,7 +199,7 @@ function Game:start(lvl)
 
     self.itIsRunning = true
 
-    self.currentLevel = lvl or 0
+    self.currentLevel = lvl or self.startLevel
     gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
 
     self:loadLevel()

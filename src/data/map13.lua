@@ -59,6 +59,192 @@ return {
           image = "polution.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 6,
+          image = "rock1.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 7,
+          image = "rock2.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 8,
+          image = "rock3.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 9,
+          image = "rock4.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 10,
+          image = "ruins_bottom.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 11,
+          image = "ruins_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 12,
+          image = "ruins_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 13,
+          image = "ruins_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 14,
+          image = "ruins_corner_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 15,
+          image = "ruins_full.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 16,
+          image = "ruins_left.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 17,
+          image = "ruins_right.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 18,
+          image = "ruins_top.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 19,
+          image = "ruins_strip_end_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 20,
+          image = "ruins_strip_end_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 21,
+          image = "ruins_strip_end_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 22,
+          image = "ruins_strip_end_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 23,
+          image = "ruins_strip_h.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 24,
+          image = "ruins_strip_v.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 25,
+          image = "ruins_angle_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 26,
+          image = "ruins_angle_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 27,
+          image = "ruins_angle_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 28,
+          image = "ruins_angle_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 29,
+          image = "ruins_bridge_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 30,
+          image = "ruins_bridge_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 31,
+          image = "ruins_bridge_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 32,
+          image = "ruins_bridge_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 33,
+          image = "ruins_strip_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 34,
+          image = "ruins_strip_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 35,
+          image = "ruins_strip_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 36,
+          image = "ruins_strip_corner_t_r.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -77,12 +263,12 @@ return {
       encoding = "lua",
       data = {
         0, 0, 0, 0, 0, 0, 0, 2,
-        6, 3, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 3, 3,
-        6, 3, 3, 3, 3, 0, 3, 3,
+        6, 10, 0, 21, 22, 8, 14, 19,
+        0, 0, 0, 0, 0, 0, 17, 16,
+        6, 21, 24, 24, 22, 0, 12, 11,
         0, 6, 0, 4, 0, 0, 0, 6,
-        0, 4, 0, 3, 6, 3, 5, 0,
-        0, 3, 3, 3, 0, 3, 3, 0,
+        0, 4, 0, 23, 6, 23, 5, 0,
+        0, 21, 24, 36, 0, 37, 22, 0,
         0, 0, 0, 0, 1, 0, 0, 0
       }
     }

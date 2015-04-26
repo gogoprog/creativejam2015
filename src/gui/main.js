@@ -42,6 +42,15 @@ $(function() {
 
     fader = $('#fader');
     fader.hide();
+
+    $( "#slider" ).slider({
+        min:0,
+        max:17,
+        slide: function( event, ui ) {
+            $("#startLevel").html(ui.value);
+            gengine_execute("Game.startLevel = " + ui.value);
+        }
+        });
 });
 
 function play()
