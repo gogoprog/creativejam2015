@@ -4,20 +4,25 @@ Map = Map or {
     obstacles = {},
     blocks = {},
     glasses = {},
-    lifes = {}
+    lifes = {},
+    teleports = {}
 }
 
 gengine.stateMachine(Map)
 
 function Map:init(lvl)
-    self:loadFile("data/map" .. lvl .. ".lua")
+    self:loadFile("data/map" .. lvl .. ".lua", lvl)
 end
 
 function Map:finalize()
     for k, v in ipairs(self.obstacles) do
-        v:remove()
+        if v:isInserted() then
+            v:remove()
+        end
         gengine.entity.destroy(v)
     end
+
+    self.obstacles = {}
 end
 
 local textures = {
@@ -33,7 +38,7 @@ local textures = {
     "rock4"
 }
 
-function Map:loadFile(filename)
+function Map:loadFile(filename, id)
 
     local map = dofile(filename)
     local w = map.width
@@ -47,6 +52,7 @@ function Map:loadFile(filename)
         self.blocks[i] = {false, false, false, false, false, false, false, false}
         self.glasses[i] = {false, false, false, false, false, false, false, false}
         self.lifes[i] = {false, false, false, false, false, false, false, false}
+        self.teleports[i] = {false, false, false, false, false, false, false, false}
     end
 
     for k, v in ipairs(data) do
@@ -65,6 +71,17 @@ function Map:loadFile(filename)
                 self.glasses[x][y] = self:addObstacle(x, y, v, false)
             elseif v == 5 then
                 self.lifes[x][y] = self:addObstacle(x, y, v, false)
+            elseif v == 6 then
+                math.randomseed(id)
+                local r = math.random(1, 3)
+
+                if r == 1 then
+                    self.glasses[x][y] = self:addObstacle(x, y, v, false)
+                elseif r == 2 then
+                    self.lifes[x][y] = self:addObstacle(x, y, v, false)
+                else
+                    self.teleports[x][y] = self:addObstacle(x, y, v, false)
+                end
             end
         end
     end
@@ -109,6 +126,10 @@ function Map:isLife(i, j)
     return self.lifes[i][j]
 end
 
+function Map:isTeleport(i, j)
+    return self.teleports[i][j]
+end
+
 function Map:isGlasses(i, j)
     return self.glasses[i][j]
 end
@@ -116,13 +137,17 @@ end
 function Map:removeGlasses(i, j)
     local e = self.glasses[i][j]
     e:remove()
-    gengine.entity.destroy(e)
     self.glasses[i][j] = false
 end
 
 function Map:removeLife(i, j)
     local e = self.lifes[i][j]
     e:remove()
-    gengine.entity.destroy(e)
     self.lifes[i][j] = false
+end
+
+function Map:removeTeleport(i, j)
+    local e = self.teleports[i][j]
+    e:remove()
+    self.teleports[i][j] = false
 end
