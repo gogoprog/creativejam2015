@@ -14,11 +14,14 @@ function start()
     Audio:init()
     Factory:init()
 
-    gengine.graphics.setClearColor(0.5, 0.5, 0.5, 1)
+    gengine.graphics.setClearColor(0.0, 0.0, 0.0, 1)
+
+    Application:init()
 
     gengine.gui.loadFile("gui/main.html")
-
-    Application:changeState("inMenu")
+    gengine.gui.onPageLoaded = function()
+        Application:start()
+    end
 end
 
 function update(dt)

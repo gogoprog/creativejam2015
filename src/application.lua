@@ -7,14 +7,40 @@ Application = Application or {
 gengine.stateMachine(Application)
 
 function Application:init()
-    Game:init()
+    self.menu = Factory:createSprite("menu", 850, 850, 10)
+    self.intro = Factory:createSprite("intro", 850, 850, 10)
+end
+
+function Application:start()
+    Application.guiFadeFunction = function(self) self:changeState('intro') end
+    self:showPage('intro', 500)
 end
 
 function Application:update(dt)
     self:updateState(dt)
 end
 
+function Application.onStateEnter:intro()
+    self.done = false
+    self.timeLeft = 2.0
+    self.intro:insert()
+end
+
+function Application.onStateUpdate:intro(dt)
+    self.timeLeft = self.timeLeft - dt
+    if not self.done and (self.timeLeft < 0 or gengine.input.keyboard:isJustDown(41) or gengine.input.mouse:isJustDown(1)) then
+        Application.guiFadeFunction = function(self) self:changeState('inMenu') end
+        self:showPage('menu', 500)
+        self.done = true
+    end
+end
+
+function Application.onStateExit:intro()
+    self.intro:remove()
+end
+
 function Application.onStateEnter:inMenu()
+    self.menu:insert()
 end
 
 function Application.onStateUpdate:inMenu(dt)
@@ -24,6 +50,7 @@ function Application.onStateUpdate:inMenu(dt)
 end
 
 function Application.onStateExit:inMenu()
+    self.menu:remove()
 end
 
 function Application.onStateEnter:inGame()

@@ -117,12 +117,15 @@ function Game.onStateEnter:winning()
     local e = Factory:createFireworkParticle()
     e:insert()
     e.position = vector2(150,-200)
+
+    self.player.sprite:removeAnimations()
+    self.player.sprite:pushAnimation(Factory.animations.periscope)
+
+    self.hole:remove()
 end
 
 function Game.onStateUpdate:winning(dt)
     self.time = self.time - dt
-
-    self.player.rotation = self.player.rotation + dt * 10
 
     if self.time < 0 then
         self:changeState("none")
@@ -131,9 +134,14 @@ function Game.onStateUpdate:winning(dt)
 end
 
 function Game.onStateExit:winning()
+
 end
 
 function Game.onStateEnter:transitionning()
+    self.hole:insert()
+    self.player.sprite:removeAnimations()
+    self.player.sprite:pushAnimation(Factory.animations.idle)
+
     self.blackSight:insert()
     self.goal:insert()
     self.goal.sprite.extent = vector2(850,850) * ( 1 + (self.currentLevel) * 0.2)
@@ -183,7 +191,7 @@ function Game:start(lvl)
 
     self.itIsRunning = true
 
-    self.currentLevel = lvl or 10
+    self.currentLevel = lvl or 0
     gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
 
     self:loadLevel()
