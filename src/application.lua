@@ -9,7 +9,7 @@ gengine.stateMachine(Application)
 function Application:init()
     self.menu = Factory:createSprite("menu", 850, 850, 10)
     self.intro = Factory:createSprite("intro", 850, 850, 10)
-    self.logo = Factory:createSprite("logo", 850, 850, 10)
+    self.logo = Factory:createSprite("logo", 850, 850, 11)
     self.logo.sprite.color = vector4(1, 1, 1, 0)
 end
 
