@@ -9,6 +9,8 @@ gengine.stateMachine(Application)
 function Application:init()
     self.menu = Factory:createSprite("menu", 850, 850, 10)
     self.intro = Factory:createSprite("intro", 850, 850, 10)
+    self.logo = Factory:createSprite("logo", 850, 850, 10)
+    self.logo.sprite.color = vector4(1, 1, 1, 0)
 end
 
 function Application:start()
@@ -24,19 +26,26 @@ function Application.onStateEnter:intro()
     self.done = false
     self.timeLeft = 2.0
     self.intro:insert()
+    self.logo:insert()
 end
 
 function Application.onStateUpdate:intro(dt)
     self.timeLeft = self.timeLeft - dt
-    if not self.done and (self.timeLeft < 0 or gengine.input.keyboard:isJustDown(41) or gengine.input.mouse:isJustDown(1)) then
+
+    if not self.done and (gengine.input.keyboard:isJustDown(41) or gengine.input.mouse:isJustDown(1)) then
         Application.guiFadeFunction = function(self) self:changeState('inMenu') end
         self:showPage('menu', 500)
         self.done = true
+    end
+
+    if self.timeLeft < 1 and self.timeLeft > 0 then
+        self.logo.sprite.color = vector4(1, 1, 1, 1 - self.timeLeft)
     end
 end
 
 function Application.onStateExit:intro()
     self.intro:remove()
+    self.logo:remove()
 end
 
 function Application.onStateEnter:inMenu()
