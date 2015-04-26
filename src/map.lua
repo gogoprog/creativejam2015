@@ -31,7 +31,7 @@ local textures = {
     "cuve",
     "glasses",
     "life",
-    "random",
+    "interrogation",
     "rock1",
     "rock2",
     "rock3",
@@ -74,13 +74,13 @@ function Map:loadFile(filename, id)
             elseif v == 6 then
                 math.randomseed(id)
                 local r = math.random(1, 3)
-
+                print("oui! " .. r)
                 if r == 1 then
-                    self.glasses[x][y] = self:addObstacle(x, y, v, false)
+                    self.glasses[x][y] = self:addObstacle(x, y, v, false, false, true)
                 elseif r == 2 then
-                    self.lifes[x][y] = self:addObstacle(x, y, v, false)
+                    self.lifes[x][y] = self:addObstacle(x, y, v, false, false, true)
                 else
-                    self.teleports[x][y] = self:addObstacle(x, y, v, false)
+                    self.teleports[x][y] = self:addObstacle(x, y, v, false, false, true)
                 end
             end
         end
@@ -98,9 +98,9 @@ function Map:update(dt)
 
 end
 
-function Map:addObstacle(x, y, v, blocking, glow)
+function Map:addObstacle(x, y, v, blocking, glow, anim)
     local b
-    b = Factory:createObstacle(x, y, textures[v], glow)
+    b = Factory:createObstacle(x, y, textures[v], glow, anim)
     table.insert(self.obstacles, b)
     b:insert()
 

@@ -97,6 +97,23 @@ function Factory:init()
             loop = false
         }
         )
+
+    atlas = gengine.graphics.atlas.create(
+        "interrogation",
+        gengine.graphics.texture.get("interrogation_mark"),
+        1,
+        8
+        )
+
+    self.animations.interrogation = gengine.graphics.animation.create(
+        "interrogation",
+        {
+            atlas = atlas,
+            frames = { 0, 1, 2, 3, 4, 5, 6, 7 },
+            framerate = 16,
+            loop = true
+        }
+        )
 end
 
 function Factory:finalize()
@@ -170,18 +187,30 @@ function Factory:createSprite(texture, w, h, l)
     return e
 end
 
-function Factory:createObstacle(i, j, texture, glow)
+function Factory:createObstacle(i, j, texture, glow, anim)
     local e = gengine.entity.create()
 
-    e:addComponent(
-        ComponentSprite(),
-        {
-            texture = gengine.graphics.texture.get(texture),
-            layer = 1,
-            extent = vector2(96,96)
-        },
-        "sprite"
-        )
+    if not anim then
+        e:addComponent(
+            ComponentSprite(),
+            {
+                texture = gengine.graphics.texture.get(texture),
+                layer = 1,
+                extent = vector2(96,96)
+            },
+            "sprite"
+            )
+    else
+        e:addComponent(
+            ComponentAnimatedSprite(),
+            {
+                animation = self.animations[texture],
+                layer = 1,
+                extent = vector2(96,96)
+            },
+            "sprite"
+            )
+    end
 
     e:addComponent(
         ComponentBox(),

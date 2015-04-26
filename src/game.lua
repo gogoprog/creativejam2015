@@ -183,7 +183,7 @@ function Game:start(lvl)
 
     self.itIsRunning = true
 
-    self.currentLevel = lvl or 0
+    self.currentLevel = lvl or 10
     gengine.gui.executeScript("updateLevel("..self.currentLevel..")")
 
     self:loadLevel()

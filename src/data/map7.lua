@@ -59,6 +59,30 @@ return {
           image = "polution.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 6,
+          image = "rock1.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 7,
+          image = "rock2.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 8,
+          image = "rock3.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 9,
+          image = "rock4.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -77,12 +101,12 @@ return {
       encoding = "lua",
       data = {
         0, 0, 0, 0, 0, 0, 0, 2,
-        0, 3, 3, 0, 3, 3, 3, 3,
+        0, 10, 7, 0, 3, 3, 3, 3,
         0, 0, 0, 0, 0, 0, 3, 3,
         3, 3, 3, 3, 3, 0, 3, 3,
         3, 0, 0, 0, 0, 0, 0, 5,
-        3, 4, 0, 3, 5, 3, 0, 0,
-        3, 3, 3, 3, 0, 3, 3, 0,
+        3, 4, 0, 3, 5, 9, 0, 0,
+        3, 3, 3, 3, 0, 10, 7, 0,
         0, 0, 1, 0, 0, 0, 0, 0
       }
     }
