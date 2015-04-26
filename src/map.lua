@@ -22,7 +22,7 @@ end
 
 local textures = {
     "start",
-    "end",
+    "finish",
     "cuve",
     "bonus",
     "insect",

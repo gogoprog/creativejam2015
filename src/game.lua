@@ -104,6 +104,27 @@ function Game.onStateExit:playing()
     self.itIsPlayable = false
 end
 
+function Game.onStateEnter:winning()
+    self.time = 2
+
+    local e = Factory:createFireworkParticle()
+    e:insert()
+end
+
+function Game.onStateUpdate:winning(dt)
+    self.time = self.time - dt
+
+    self.player.rotation = self.player.rotation + dt * 10
+
+    if self.time < 0 then
+        self:changeState("none")
+        Application:transition()
+    end
+end
+
+function Game.onStateExit:winning()
+end
+
 function Game.onStateEnter:transitionning()
     self.blackSight:insert()
     self.goal:insert()
@@ -224,10 +245,5 @@ end
 
 function Game:win()
     Audio:playSound("win", 2, 0.3)
-
-    local e = Factory:createFireworkParticle()
-    e:insert()
-
-    self:changeState("none")
-    Application:transition()
+    self:changeState("winning")
 end
