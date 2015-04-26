@@ -83,6 +83,174 @@ return {
           image = "rock4.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 10,
+          image = "ruins_bottom.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 11,
+          image = "ruins_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 12,
+          image = "ruins_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 13,
+          image = "ruins_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 14,
+          image = "ruins_corner_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 15,
+          image = "ruins_full.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 16,
+          image = "ruins_left.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 17,
+          image = "ruins_right.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 18,
+          image = "ruins_top.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 19,
+          image = "ruins_strip_end_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 20,
+          image = "ruins_strip_end_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 21,
+          image = "ruins_strip_end_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 22,
+          image = "ruins_strip_end_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 23,
+          image = "ruins_strip_h.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 24,
+          image = "ruins_strip_v.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 25,
+          image = "ruins_top.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 26,
+          image = "ruins_angle_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 27,
+          image = "ruins_angle_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 28,
+          image = "ruins_angle_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 29,
+          image = "ruins_angle_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 30,
+          image = "ruins_bridge_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 31,
+          image = "ruins_bridge_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 32,
+          image = "ruins_bridge_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 33,
+          image = "ruins_bridge_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 34,
+          image = "ruins_strip_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 35,
+          image = "ruins_strip_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 36,
+          image = "ruins_strip_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 37,
+          image = "ruins_strip_corner_t_r.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -101,12 +269,12 @@ return {
       encoding = "lua",
       data = {
         0, 0, 2, 0, 0, 0, 0, 0,
-        3, 3, 3, 3, 3, 0, 0, 0,
-        4, 3, 3, 3, 3, 3, 3, 0,
-        0, 0, 0, 10, 0, 0, 0, 0,
+        8, 14, 19, 19, 19, 15, 0, 0,
+        4, 12, 27, 28, 11, 13, 9, 0,
+        0, 0, 12, 13, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 10, 5,
-        0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 3, 0, 0, 0,
+        0, 0, 0, 9, 36, 24, 24, 24,
+        0, 0, 0, 0, 20, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 1, 0
       }
     }

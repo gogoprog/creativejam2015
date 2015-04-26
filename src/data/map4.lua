@@ -173,6 +173,30 @@ return {
           image = "ruins_strip_v.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 25,
+          image = "ruins_angle_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 26,
+          image = "ruins_angle_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 27,
+          image = "ruins_angle_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 28,
+          image = "ruins_angle_t_r.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -191,12 +215,12 @@ return {
       encoding = "lua",
       data = {
         0, 0, 2, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 4, 0,
-        0, 7, 9, 0, 0, 0, 0, 14,
+        0, 7, 0, 0, 0, 0, 4, 0,
+        0, 0, 9, 0, 0, 0, 0, 14,
         0, 5, 0, 0, 0, 0, 0, 17,
-        0, 0, 0, 0, 14, 19, 19, 3,
-        19, 15, 0, 0, 12, 11, 3, 16,
-        3, 13, 0, 0, 0, 0, 12, 11,
+        0, 0, 0, 0, 14, 19, 19, 28,
+        19, 15, 0, 0, 12, 11, 26, 16,
+        27, 13, 0, 0, 0, 0, 12, 11,
         18, 0, 0, 0, 0, 0, 0, 1
       }
     }
