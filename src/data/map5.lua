@@ -83,6 +83,96 @@ return {
           image = "rock4.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 10,
+          image = "ruins_bottom.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 11,
+          image = "ruins_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 12,
+          image = "ruins_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 13,
+          image = "ruins_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 14,
+          image = "ruins_corner_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 15,
+          image = "ruins_full.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 16,
+          image = "ruins_left.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 17,
+          image = "ruins_right.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 18,
+          image = "ruins_top.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 19,
+          image = "ruins_strip_end_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 20,
+          image = "ruins_strip_end_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 21,
+          image = "ruins_strip_end_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 22,
+          image = "ruins_strip_end_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 23,
+          image = "ruins_strip_h.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 24,
+          image = "ruins_strip_v.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -100,14 +190,14 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 3, 3, 3, 0, 0, 2, 0,
-        3, 3, 0, 0, 0, 0, 7, 8,
-        3, 0, 0, 0, 0, 0, 0, 0,
-        3, 0, 0, 3, 0, 0, 5, 0,
-        0, 0, 0, 3, 3, 3, 0, 0,
-        0, 0, 0, 0, 4, 3, 3, 3,
-        3, 3, 3, 0, 0, 0, 8, 3,
-        3, 3, 1, 0, 0, 3, 3, 3
+        16, 3, 11, 13, 0, 0, 2, 0,
+        3, 13, 0, 0, 0, 0, 21, 22,
+        18, 0, 0, 0, 0, 0, 0, 0,
+        13, 0, 0, 23, 0, 0, 5, 0,
+        0, 0, 0, 3, 24, 3, 0, 0,
+        0, 0, 0, 0, 4, 20, 8, 14,
+        14, 15, 7, 0, 0, 0, 14, 3,
+        12, 13, 1, 0, 0, 14, 3, 16
       }
     }
   }
