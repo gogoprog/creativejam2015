@@ -159,13 +159,15 @@ function Game.onStateEnter:losing()
     self.time = 2
     Audio:playSound("dead")
     self.player.player:changeState("dying")
+    self.done = false
 end
 
 function Game.onStateUpdate:losing(dt)
     self.time = self.time - dt
 
-    if self.time < 0 then
+    if self.time < 0 and not self.done then
         Application:goToMenu()
+        self.done = true
     end
 end
 
