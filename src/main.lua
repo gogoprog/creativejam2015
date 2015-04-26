@@ -4,7 +4,7 @@ require 'audio'
 
 function init()
     gengine.application.setName("CreativeJam2015")
-    gengine.application.setExtent(800, 800)
+    gengine.application.setExtent(768, 768)
     gengine.application.setFullscreen(false)
 
     gengine.application.setUpdateFactor(1.0)
