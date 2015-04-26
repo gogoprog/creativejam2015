@@ -130,7 +130,7 @@ end
 function Game.onStateEnter:transitionning()
     self.blackSight:insert()
     self.goal:insert()
-    self.goal.sprite.extent = vector2(850,850) * ( 1 + (self.currentLevel-1) * 0.2)
+    self.goal.sprite.extent = vector2(850,850) * ( 1 + (self.currentLevel) * 0.2)
     self.time = 2
     self.done = false
 end
