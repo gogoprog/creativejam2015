@@ -228,7 +228,7 @@ function Factory:createFireworkParticle()
     local e = self:pickFromPool(self.fireworkParticles)
 
     if not e then
-        e = gengine.entity.create() 
+        e = gengine.entity.create()
 
         e:addComponent(
             ComponentParticleSystem(),
@@ -246,7 +246,7 @@ function Factory:createFireworkParticle()
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
                 colors = {vector4(0.8,0.8,0.9,1), vector4(0.3,0.3,0.9,1), vector4(0,0,0,0)},
-                layer = 1000
+                layer = 10000
             },
             "p1"
             )
@@ -267,7 +267,7 @@ function Factory:createFireworkParticle()
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
                 colors = {vector4(0.3,0.8,0.4,1), vector4(0.3,0.6,0.6,1), vector4(0,0,0,0)},
-                layer = 1000
+                layer = 10000
             },
             "p2"
             )
@@ -288,7 +288,7 @@ function Factory:createFireworkParticle()
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
                 colors = {vector4(0.8,0.3,0.4,1), vector4(0.9,0.6,0.3,1), vector4(0,0,0,0)},
-                layer = 1000
+                layer = 10000
             },
             "p3"
             )
@@ -310,7 +310,7 @@ function Factory:createFireworkParticle()
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
                 colors = {vector4(0.8,0.1,0.1,1), vector4(1,1,0,1), vector4(0,0,0,0)},
-                layer = 1000
+                layer = 10000
             },
             "p4"
             )
@@ -328,8 +328,7 @@ function Factory:createFireworkParticle()
                duration = 2
             }
             )
-
-        end
+    end
 
     e.p1:reset()
     e.p2:reset()
