@@ -101,7 +101,7 @@ function Map:loadFile(filename, id)
             elseif v == 4 then
                 self.glasses[x][y] = self:addObstacle(x, y, v, false)
             elseif v == 5 then
-                self.lifes[x][y] = self:addObstacle(x, y, v, false)
+                self.lifes[x][y] = self:addObstacle(x, y, v, false, false, true)
             elseif v == 6 then
                 local r = math.random(1, 4)
                 if r == 1 then
