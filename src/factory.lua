@@ -541,7 +541,7 @@ function Factory:createTeleportParticle()
                 extentRange = { vector2(3,3),vector2(17,17)},
                 linearAccelerationRange = { vector2(0,0), vector2(0,0)},
                 scales = {vector2(1.5,1.5),vector2(3,3)},
-                colors = {vector4(0.8,1,0.8,1)}
+                colors = {vector4(0.8,1,0.8,1)},
                 layer = 10000
             },
             "particle"
