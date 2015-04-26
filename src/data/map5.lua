@@ -173,6 +173,78 @@ return {
           image = "ruins_strip_v.png",
           width = 96,
           height = 96
+        },
+        {
+          id = 25,
+          image = "ruins_angle_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 26,
+          image = "ruins_angle_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 27,
+          image = "ruins_angle_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 28,
+          image = "ruins_angle_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 29,
+          image = "ruins_bridge_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 30,
+          image = "ruins_bridge_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 31,
+          image = "ruins_bridge_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 32,
+          image = "ruins_bridge_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 33,
+          image = "ruins_strip_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 34,
+          image = "ruins_strip_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 35,
+          image = "ruins_strip_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 36,
+          image = "ruins_strip_corner_t_r.png",
+          width = 96,
+          height = 96
         }
       }
     }
@@ -190,14 +262,14 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        16, 3, 11, 13, 0, 0, 2, 0,
-        3, 13, 0, 0, 0, 0, 21, 22,
+        16, 27, 11, 13, 0, 0, 2, 0,
+        27, 13, 0, 0, 0, 0, 21, 22,
         18, 0, 0, 0, 0, 0, 0, 0,
         13, 0, 0, 23, 0, 0, 5, 0,
-        0, 0, 0, 3, 24, 3, 0, 0,
+        0, 0, 0, 37, 24, 34, 0, 0,
         0, 0, 0, 0, 4, 20, 8, 14,
-        14, 15, 7, 0, 0, 0, 14, 3,
-        12, 13, 1, 0, 0, 14, 3, 16
+        14, 15, 7, 0, 0, 0, 14, 28,
+        12, 13, 1, 0, 0, 14, 28, 16
       }
     }
   }

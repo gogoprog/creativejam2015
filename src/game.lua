@@ -89,6 +89,7 @@ end
 
 function Game.onStateEnter:playing()
     self.itIsPlayable = true
+    gengine.application.setUpdateFactor(1.0)
 end
 
 function Game.onStateUpdate:playing(dt)
@@ -97,6 +98,11 @@ function Game.onStateUpdate:playing(dt)
     if gengine.input.keyboard:isJustUp(41) then
         self:changeState("none")
         Application:goToMenu()
+    end
+
+    if gengine.input.keyboard:isJustUp(19) then
+        gengine.application.setUpdateFactor(10.0)
+        self:win()
     end
 end
 
