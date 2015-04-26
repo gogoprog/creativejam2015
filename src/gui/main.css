@@ -4,7 +4,7 @@
     font-weight: bold;
 }
 
-#main {
+body, #main {
     font-family: "HeartHole";
     color:white;
     font-size:45px;

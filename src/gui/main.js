@@ -73,5 +73,5 @@ function updateGlasses(count)
 
 function updateLevel(count)
 {
-    $("#level").html(count);
+    $("#level").html("Level " + count);
 }
