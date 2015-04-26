@@ -24,8 +24,8 @@ local textures = {
     "start",
     "finish",
     "cuve",
-    "bonus",
-    "insect",
+    "glasses",
+    "life",
     "todo",
     "todo"
 }
