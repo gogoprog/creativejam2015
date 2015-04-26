@@ -206,7 +206,7 @@ function Factory:createObstacle(i, j, texture, glow, anim)
             {
                 animation = self.animations[texture],
                 layer = 1,
-                extent = vector2(96,96)
+                --extent = vector2(96,96)
             },
             "sprite"
             )

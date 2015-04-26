@@ -40,6 +40,12 @@ local textures = {
 
 function Map:loadFile(filename, id)
 
+    math.randomseed(id)
+    math.random()
+    math.random()
+    math.random()
+    math.random()
+
     local map = dofile(filename)
     local w = map.width
     local h = map.height
@@ -72,9 +78,8 @@ function Map:loadFile(filename, id)
             elseif v == 5 then
                 self.lifes[x][y] = self:addObstacle(x, y, v, false)
             elseif v == 6 then
-                math.randomseed(id)
-                local r = math.random(1, 3)
-                print("oui! " .. r)
+                print("id = " .. id)
+                local r = math.random(1, 4)
                 if r == 1 then
                     self.glasses[x][y] = self:addObstacle(x, y, v, false, false, true)
                 elseif r == 2 then

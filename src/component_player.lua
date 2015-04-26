@@ -22,7 +22,7 @@ end
 function ComponentPlayer.onStateEnter:idling()
 
     if self.indices == Map.endPositionIndices then
-            Game:win()
+        Game:win()
     end
 
     self.entity.sprite:removeAnimations()
@@ -46,6 +46,23 @@ function ComponentPlayer.onStateEnter:idling()
         local e = Factory:createLifeParticles()
         e.position = self.entity.position
         e:insert()
+    end
+
+    if Map:isLife(i, j) then
+        Game:addLife(1)
+        Map:removeLife(i, j)
+        Audio:playSound("bonus", 5, 0.1)
+        local e = Factory:createLifeParticles()
+        e.position = self.entity.position
+        e:insert()
+    end
+
+    if Map:isTeleport(i, j) then
+        Map:removeTeleport(i, j)
+        Audio:playSound("bonus", 3, 0.1)
+        local indices = Map.startPositionIndices
+        self.entity.position:set(Map:getTilePosition(indices.x, indices.y))
+        self.indices = indices
     end
 
     local mouse = gengine.input.mouse
