@@ -2,7 +2,7 @@ require 'factory'
 require 'map'
 
 Game = Game or {
-    mapCount = 16,
+    mapCount = 18,
     numberOfGlasses = 1,
     numberOfLife = 3
 }

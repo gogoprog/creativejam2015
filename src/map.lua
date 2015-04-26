@@ -44,7 +44,13 @@ local textures = {
     "ruins_full",
     "ruins_left",
     "ruins_right",
-    "ruins_top"
+    "ruins_top",
+    "ruins_strip_end_b",
+    "ruins_strip_end_l",
+    "ruins_strip_end_r",
+    "ruins_strip_end_t",
+    "ruins_strip_h",
+    "ruins_strip_v"
 }
 
 function Map:loadFile(filename, id)
@@ -80,14 +86,11 @@ function Map:loadFile(filename, id)
             elseif v == 2 then
                 self.endPositionIndices = vector2(x, y)
                 self:addObstacle(x, y, v, false, true)
-            elseif v == 3 then
-                self:addObstacle(x, y, v, true)
             elseif v == 4 then
                 self.glasses[x][y] = self:addObstacle(x, y, v, false)
             elseif v == 5 then
                 self.lifes[x][y] = self:addObstacle(x, y, v, false)
             elseif v == 6 then
-                print("id = " .. id)
                 local r = math.random(1, 4)
                 if r == 1 then
                     self.glasses[x][y] = self:addObstacle(x, y, v, false, false, true)
@@ -96,6 +99,8 @@ function Map:loadFile(filename, id)
                 else
                     self.teleports[x][y] = self:addObstacle(x, y, v, false, false, true)
                 end
+            else
+                self:addObstacle(x, y, v, true)
             end
         end
     end

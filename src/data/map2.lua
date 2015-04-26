@@ -62,13 +62,115 @@ return {
         },
         {
           id = 6,
-          image = "glasses.png",
+          image = "rock1.png",
           width = 96,
           height = 96
         },
         {
           id = 7,
-          image = "life.png",
+          image = "rock2.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 8,
+          image = "rock3.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 9,
+          image = "rock4.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 10,
+          image = "ruins_bottom.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 11,
+          image = "ruins_corner_b_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 12,
+          image = "ruins_corner_b_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 13,
+          image = "ruins_corner_t_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 14,
+          image = "ruins_corner_t_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 15,
+          image = "ruins_full.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 16,
+          image = "ruins_left.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 17,
+          image = "ruins_right.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 18,
+          image = "ruins_top.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 19,
+          image = "ruins_strip_end_b.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 20,
+          image = "ruins_strip_end_l.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 21,
+          image = "ruins_strip_end_r.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 22,
+          image = "ruins_strip_end_t.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 23,
+          image = "ruins_strip_h.png",
+          width = 96,
+          height = 96
+        },
+        {
+          id = 24,
+          image = "ruins_strip_v.png",
           width = 96,
           height = 96
         }
@@ -88,14 +190,14 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        3, 0, 0, 0, 0, 2, 0, 0,
-        3, 3, 8, 0, 0, 0, 0, 3,
-        3, 3, 0, 0, 0, 0, 3, 3,
-        3, 3, 0, 0, 0, 3, 3, 3,
-        3, 3, 0, 7, 0, 0, 3, 3,
-        3, 3, 0, 0, 0, 0, 0, 3,
-        3, 0, 0, 0, 0, 0, 0, 3,
-        0, 0, 1, 0, 0, 0, 0, 3
+        15, 0, 0, 0, 0, 2, 0, 0,
+        3, 15, 5, 0, 0, 0, 0, 14,
+        16, 18, 0, 0, 0, 0, 14, 3,
+        16, 18, 0, 0, 0, 21, 3, 16,
+        16, 18, 0, 4, 0, 0, 12, 3,
+        3, 13, 0, 0, 0, 0, 0, 17,
+        13, 0, 0, 0, 0, 0, 0, 17,
+        0, 0, 1, 0, 0, 0, 0, 17
       }
     }
   }
