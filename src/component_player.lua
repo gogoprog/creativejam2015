@@ -24,10 +24,6 @@ function ComponentPlayer.onStateEnter:idling()
     self.entity.sprite:removeAnimations()
     self.entity.sprite:pushAnimation(Factory.animations.idle)
 
-    if self.indices == Map.endPositionIndices then
-        Game:win()
-    end
-
     local i, j = self.indices.x, self.indices.y
 
     if Map:isGlasses(i, j) then
@@ -121,7 +117,12 @@ function ComponentPlayer.onStateUpdate:moving(dt)
 
     if done then
         self.indices = self.target
-        self:changeState("idling")
+
+        if self.indices == Map.endPositionIndices then
+            Game:win()
+        else
+            self:changeState("idling")
+        end
     end
 end
 
@@ -147,6 +148,18 @@ end
 function ComponentPlayer.onStateExit:shaking()
 end
 
+function ComponentPlayer.onStateEnter:dying()
+    print("anim dead")
+    self.entity.sprite:removeAnimations()
+    self.entity.sprite:pushAnimation(Factory.animations.dead)
+end 
+
+function ComponentPlayer.onStateUpdate:dying(dt)
+end 
+
+function ComponentPlayer.onStateExit:dying()
+end
+
 
 function ComponentPlayer:tryMove(i, j)
     local a = Map:getTilePosition(self.indices.x, self.indices.y)
@@ -167,6 +180,10 @@ function ComponentPlayer:tryMove(i, j)
         e:insert()
         Game.camera.shaker:shake(0.5)
         Game:addLife(-1)
-        self:changeState("shaking")
+        if Game:getLife() == 0 then 
+            self:changeState("dying")
+        else
+            self:changeState("shaking")
+        end
     end
 end

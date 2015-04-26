@@ -13,14 +13,15 @@ Factory = Factory or {
 }
 
 function Factory:pickFromPool(t)
-    local n = #t
-    if n > 0 then
-        local e = t[n]
-        table.remove(t, n)
-        return e
-    end
-
     return nil
+    -- local n = #t
+    -- if n > 0 then
+    --     local e = t[n]
+    --     table.remove(t, n)
+    --     return e
+    -- end
+
+    -- return nil
 end
 
 function Factory:init()
@@ -75,6 +76,23 @@ function Factory:init()
         {
             atlas = atlas,
             frames = { 0, 1, 2, 3, 4, 5, 6 },
+            framerate = 16,
+            loop = false
+        }
+        )
+
+    atlas = gengine.graphics.atlas.create(
+        "dead",
+        gengine.graphics.texture.get("dead"),
+        1,
+        10
+        )
+
+    self.animations.dead = gengine.graphics.animation.create(
+        "dead",
+        {
+            atlas = atlas,
+            frames = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 },
             framerate = 16,
             loop = false
         }
@@ -266,8 +284,8 @@ function Factory:createFireworkParticle()
                 spinRange = {0, 1},
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
-                colors = {vector4(0.3,0.8,0.4,1), vector4(0.3,0.6,0.6,1), vector4(0,0,0,0)},
-                layer = 10000
+                colors = {vector4(0.7,0.4,0.7,1), vector4(0.5,0.6,0.5,1), vector4(0,0,0,0)},
+                layer = 1000
             },
             "p2"
             )
