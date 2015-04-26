@@ -47,6 +47,12 @@ function ComponentPlayer.onStateEnter:idling()
         e.position = self.entity.position
         e:insert()
     end
+
+    local mouse = gengine.input.mouse
+
+    if mouse:isDown(1) then 
+        self.startMousePosition = mouse:getPosition()
+    end
 end
 
 function ComponentPlayer.onStateUpdate:idling(dt)
@@ -66,17 +72,17 @@ function ComponentPlayer.onStateUpdate:idling(dt)
         end
 
         if mouse:isJustDown(1) then
-            self.startMousePosition = mouse:getPosition() 
+            self.startMousePosition = mouse:getPosition()
         end
 
         if mouse:isDown(1) then 
-            if self.startMousePosition.x < mouse:getPosition(1).x and mouse:getPosition(1).x - self.startMousePosition.x > 100 then 
+            if self.startMousePosition.x < mouse:getPosition().x and mouse:getPosition().x - self.startMousePosition.x > 100 then 
                 self:tryMove(self.indices.x + 1, self.indices.y)
-            elseif self.startMousePosition.x > mouse:getPosition(1).x and self.startMousePosition.x - mouse:getPosition(1).x > 100 then  
+            elseif self.startMousePosition.x > mouse:getPosition().x and self.startMousePosition.x - mouse:getPosition().x > 100 then  
                 self:tryMove(self.indices.x - 1, self.indices.y)
-            elseif self.startMousePosition.y < mouse:getPosition(1).y and mouse:getPosition(1).y - self.startMousePosition.y > 100 then  
+            elseif self.startMousePosition.y < mouse:getPosition().y and mouse:getPosition().y - self.startMousePosition.y > 100 then  
                 self:tryMove(self.indices.x, self.indices.y - 1)
-            elseif self.startMousePosition.y > mouse:getPosition(1).y and self.startMousePosition.y - mouse:getPosition(1).y > 100 then 
+            elseif self.startMousePosition.y > mouse:getPosition().y and self.startMousePosition.y - mouse:getPosition().y > 100 then 
                 self:tryMove(self.indices.x, self.indices.y + 1)
             end
         end
