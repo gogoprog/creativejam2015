@@ -9,7 +9,8 @@ Factory = Factory or {
     collisionParticles = {},
     fireworkParticles = {},
     bonusParticles = {},
-    lifeParticules = {}
+    lifeParticules = {},
+    teleportParticles = {}
 }
 
 function Factory:pickFromPool(t)
@@ -518,6 +519,52 @@ function Factory:createLifeParticles()
 
     return e
 
+end
+
+function Factory:createTeleportParticle()
+    local e = self:pickFromPool(self.teleportParticles)
+
+    if not e then
+        e = gengine.entity.create()
+
+        e:addComponent(
+            ComponentParticleSystem(),
+            {
+                texture = gengine.graphics.texture.get("particle"),
+                size = 250,
+                emitterRate = 250,
+                directionRange= { -2, 4 },
+                speedRange = {10,120},
+                lifeTimeRange = {0.1,1.2},
+                rotationRange = { -1,1.5},
+                spinRange = {-1,2.5},
+                extentRange = { vector2(3,3),vector2(17,17)},
+                linearAccelerationRange = { vector2(0,0), vector2(0,0)},
+                scales = {vector2(1.5,1.5),vector2(3,3)},
+                colors = {vector4(0.8,1,0.8,1)}
+                layer = 10000
+            },
+            "particle"
+            )
+
+        e:addComponent(
+            ComponentPoolable(),
+            {
+                pool = self.teleportParticles
+            }
+            )
+
+        e:addComponent(
+            ComponentAutoRemove(),
+            {
+               duration = 2
+            }
+            )
+    end
+
+    e.particle:reset()
+
+    return e
 end
 
 function Factory:createPlayer()
