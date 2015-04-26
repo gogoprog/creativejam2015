@@ -7,6 +7,7 @@
     <script src="/gui/jquery-1.11.2.min.js"></script>
     <script src="/gui/jquery-ui.min.js"></script>
     <script src="/gui/main.js"></script>
+
 </head>
 
 <body>
@@ -35,9 +36,16 @@
             <br/>
             <br/>
             <br/>
-            <input type="checkbox" id="sounds" checked onchange="toggleSound()"/><span>Sounds</span><br/>
-            <input type="checkbox" id="music" checked onchange="toggleMusic()"/><span>Music</span>
-            <br/>
+            <table style="text-align:center;margin-left:auto;margin-right:auto;">
+                <tr>
+                    <td> <input type="checkbox" id="sounds" checked onchange="toggleSound()"/> </td>
+                    <td> <span>Sounds</span> </td>
+                </tr>
+                <tr>
+                    <td>  <input type="checkbox" id="music" checked onchange="toggleMusic()"/> </td>
+                    <td> <span>Music</span> </td>
+                </tr>
+            </table>
             <span class="button" onclick="showPage('menu', 500);">Back</span><br/>
         </div>
 

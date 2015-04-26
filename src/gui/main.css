@@ -65,3 +65,10 @@ body, #main {
     margin:0;
     padding:0;
 }
+
+input[type="checkbox"]{
+    content:"";
+    display:inline-block;
+    width:32px;
+    height:32px;
+}
