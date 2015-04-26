@@ -170,14 +170,14 @@ function Factory:createSprite(texture, w, h, l)
     return e
 end
 
-function Factory:createObstacle(i, j, texture)
+function Factory:createObstacle(i, j, texture, glow)
     local e = gengine.entity.create()
 
     e:addComponent(
         ComponentSprite(),
         {
             texture = gengine.graphics.texture.get(texture),
-            layer = 0,
+            layer = 1,
             extent = vector2(96,96)
         },
         "sprite"
@@ -189,6 +189,29 @@ function Factory:createObstacle(i, j, texture)
         },
         "box"
         )
+
+    if glow then
+        e:addComponent(
+            ComponentParticleSystem(),
+            {
+                texture = gengine.graphics.texture.get("particle"),
+                size = 1,
+                emitterRate = 1000,
+                emitterLifeTime = 10240,
+                extentRange = {vector2(160,160), vector2(160,160)},
+                lifeTimeRange = {1, 1},
+                directionRange = {2*3.14, 3*3.14},
+                speedRange = {0, 0},
+                rotationRange = {0, 0},
+                spinRange = {10, 10},
+                linearAccelerationRange = {vector2(0,0), vector2(0,0)},
+                scales = {vector2(1, 1), vector2(0.5, 0.5), vector2(1, 1)},
+                colors = {vector4(1,1,0,1)},
+                layer = 0
+            },
+            "particle"
+            )
+    end
 
     e.box:setPosition(i , j)
 
