@@ -26,8 +26,11 @@ local textures = {
     "cuve",
     "glasses",
     "life",
-    "todo",
-    "todo"
+    "random",
+    "rock1",
+    "rock2",
+    "rock3",
+    "rock4"
 }
 
 function Map:loadFile(filename)
