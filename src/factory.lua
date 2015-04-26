@@ -13,15 +13,15 @@ Factory = Factory or {
 }
 
 function Factory:pickFromPool(t)
-    return nil
-    -- local n = #t
-    -- if n > 0 then
-    --     local e = t[n]
-    --     table.remove(t, n)
-    --     return e
-    -- end
-
     -- return nil
+    local n = #t
+    if n > 0 then
+        local e = t[n]
+        table.remove(t, n)
+        return e
+    end
+
+    return nil
 end
 
 function Factory:init()
@@ -194,7 +194,7 @@ function Factory:createObstacle(i, j, texture, glow)
         e:addComponent(
             ComponentParticleSystem(),
             {
-                texture = gengine.graphics.texture.get("particle"),
+                texture = gengine.graphics.texture.get("star_particle"),
                 size = 1,
                 emitterRate = 1000,
                 emitterLifeTime = 10240,
@@ -203,7 +203,7 @@ function Factory:createObstacle(i, j, texture, glow)
                 directionRange = {2*3.14, 3*3.14},
                 speedRange = {0, 0},
                 rotationRange = {0, 0},
-                spinRange = {10, 10},
+                spinRange = {-10, 10},
                 linearAccelerationRange = {vector2(0,0), vector2(0,0)},
                 scales = {vector2(1, 1), vector2(0.5, 0.5), vector2(1, 1)},
                 colors = {vector4(1,1,0,1)},
