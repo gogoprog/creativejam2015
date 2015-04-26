@@ -10,6 +10,8 @@ Game = Game or {
 gengine.stateMachine(Game)
 
 function Game:init(dt)
+    Audio:playMusic()
+
     self.camera = Factory:createCamera()
     self.camera:insert()
 
