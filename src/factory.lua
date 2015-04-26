@@ -133,6 +133,23 @@ function Factory:init()
         )
 
     atlas = gengine.graphics.atlas.create(
+        "glasses",
+        gengine.graphics.texture.get("glasses"),
+        1,
+        8
+        )
+
+    self.animations.glasses = gengine.graphics.animation.create(
+        "glasses",
+        {
+            atlas = atlas,
+            frames = { 0, 1, 2, 3, 4, 5, 6, 7 },
+            framerate = 16,
+            loop = true
+        }
+        )
+
+    atlas = gengine.graphics.atlas.create(
         "periscope",
         gengine.graphics.texture.get("periscope"),
         1,

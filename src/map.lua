@@ -99,7 +99,7 @@ function Map:loadFile(filename, id)
                 self.endPositionIndices = vector2(x, y)
                 self:addObstacle(x, y, v, false, true)
             elseif v == 4 then
-                self.glasses[x][y] = self:addObstacle(x, y, v, false)
+                self.glasses[x][y] = self:addObstacle(x, y, v, false, false, true)
             elseif v == 5 then
                 self.lifes[x][y] = self:addObstacle(x, y, v, false, false, true)
             elseif v == 6 then
