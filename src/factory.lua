@@ -499,7 +499,7 @@ function Factory:createLifeParticles()
         e:addComponent(
             ComponentParticleSystem(),
             {
-                texture = gengine.graphics.texture.get("life"),
+                texture = gengine.graphics.texture.get("life_particle"),
                 size = 1,
                 emitterRate = 100,
                 emitterLifeTime = 0.1,
