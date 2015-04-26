@@ -89,7 +89,7 @@ function Application:play()
 end
 
 function Application:goToMenu()
-    Application.guiFadeFunction = function(self) self:changeState('menu') end
+    Application.guiFadeFunction = function(self) self:changeState('inMenu') end
     self:showPage('menu', 500)
 end
 
