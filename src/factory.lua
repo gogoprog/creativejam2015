@@ -528,7 +528,7 @@ function Factory:createLifeParticles()
                 spinRange = {0, 0},
                 linearAccelerationRange = {vector2(0,0), vector2(0,0)},
                 scales = {vector2(5, 5),vector2(15,15)},
-                colors = {vector4(1,0,0,1), vector4(1,0,0,1)},
+                colors = {vector4(1,0,0,1), vector4(1,0,0,0)},
                 layer = 10000
             },
             "particle"
