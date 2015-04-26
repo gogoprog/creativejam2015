@@ -18,10 +18,11 @@ function start()
 
     Application:init()
 
-    gengine.gui.loadFile("gui/main.html")
     gengine.gui.onPageLoaded = function()
         Application:start()
     end
+
+    gengine.gui.loadFile("gui/main.html")
 end
 
 function update(dt)
