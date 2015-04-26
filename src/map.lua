@@ -24,10 +24,13 @@ local textures = {
     "start",
     "finish",
     "cuve",
-    "bonus",
-    "insect",
-    "todo",
-    "todo"
+    "glasses",
+    "life",
+    "random",
+    "rock1",
+    "rock2",
+    "rock3",
+    "rock4"
 }
 
 function Map:loadFile(filename)
@@ -55,7 +58,7 @@ function Map:loadFile(filename)
                 self.startPositionIndices = vector2(x, y)
             elseif v == 2 then
                 self.endPositionIndices = vector2(x, y)
-                self:addObstacle(x, y, v, false)
+                self:addObstacle(x, y, v, false, true)
             elseif v == 3 then
                 self:addObstacle(x, y, v, true)
             elseif v == 4 then
@@ -78,9 +81,9 @@ function Map:update(dt)
 
 end
 
-function Map:addObstacle(x, y, v, blocking)
+function Map:addObstacle(x, y, v, blocking, glow)
     local b
-    b = Factory:createObstacle(x, y, textures[v])
+    b = Factory:createObstacle(x, y, textures[v], glow)
     table.insert(self.obstacles, b)
     b:insert()
 
