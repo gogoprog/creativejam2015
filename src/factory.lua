@@ -122,7 +122,7 @@ function Factory:init()
         8
         )
 
-    self.animations.interrogation = gengine.graphics.animation.create(
+    self.animations.life = gengine.graphics.animation.create(
         "life",
         {
             atlas = atlas,
