@@ -54,7 +54,15 @@ local textures = {
     "ruins_angle_b_l",
     "ruins_angle_b_r",
     "ruins_angle_t_l",
-    "ruins_angle_t_r"
+    "ruins_angle_t_r",
+    "ruins_bridge_b",
+    "ruins_bridge_l",
+    "ruins_bridge_r",
+    "ruins_bridge_t",
+    "ruins_strip_corner_b_l",
+    "ruins_strip_corner_b_r",
+    "ruins_strip_corner_t_l",
+    "ruins_strip_corner_t_r"
 }
 
 function Map:loadFile(filename, id)
