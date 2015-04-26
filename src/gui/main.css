@@ -7,7 +7,7 @@
 body, #main {
     font-family: "HeartHole";
     color:white;
-    font-size:45px;
+    font-size:65px;
     text-align: center;
     margin:0;
     padding:0;
@@ -16,7 +16,7 @@ body, #main {
 }
 
 .title {
-    font-size:60px;
+    font-size:100px;
 }
 
 .subtitle {

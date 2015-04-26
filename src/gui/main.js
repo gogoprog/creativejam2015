@@ -42,8 +42,6 @@ $(function() {
 
     fader = $('#fader');
     fader.hide();
-
-    showPage('menu', 0);
 });
 
 function play()
