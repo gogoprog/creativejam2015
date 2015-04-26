@@ -2,7 +2,7 @@ require 'factory'
 require 'map'
 
 Game = Game or {
-    mapCount = 12,
+    mapCount = 15,
     numberOfGlasses = 1,
     numberOfLife = 3
 }
@@ -109,6 +109,14 @@ function Game.onStateEnter:winning()
 
     local e = Factory:createFireworkParticle()
     e:insert()
+    e.position = vector2(-150,-200)
+
+    local e = Factory:createFireworkParticle()
+    e:insert()
+
+    local e = Factory:createFireworkParticle()
+    e:insert()
+    e.position = vector2(150,-200)
 end
 
 function Game.onStateUpdate:winning(dt)

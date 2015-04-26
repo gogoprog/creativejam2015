@@ -93,7 +93,7 @@ function Factory:init()
         {
             atlas = atlas,
             frames = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 },
-            framerate = 16,
+            framerate = 5,
             loop = false
         }
         )
@@ -263,7 +263,7 @@ function Factory:createFireworkParticle()
                 spinRange = {0, 1},
                 linearAccelerationRange = {vector2(0,-400), vector2(0,-500)},
                 scales = {vector2(0.2, 0.2)},
-                colors = {vector4(0.8,0.8,0.9,1), vector4(0.3,0.3,0.9,1), vector4(0,0,0,0)},
+                colors = {vector4(0.8,0,0.9,1), vector4(0.3,0.3,0.5,1), vector4(0,0,0,0)},
                 layer = 10000
             },
             "p1"
