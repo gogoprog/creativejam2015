@@ -531,7 +531,7 @@ function Factory:createTeleportParticle()
             ComponentParticleSystem(),
             {
                 texture = gengine.graphics.texture.get("particle"),
-                size = 250,
+                size = 125,
                 emitterRate = 250,
                 directionRange= { -2, 4 },
                 speedRange = {10,120},

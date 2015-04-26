@@ -57,8 +57,17 @@ function ComponentPlayer.onStateEnter:idling()
         Map:removeTeleport(i, j)
         Audio:playSound("bonus", 3, 0.1)
         local indices = Map.startPositionIndices
+
+        local e = Factory:createTeleportParticle()
+        e.position = self.entity.position
+        e:insert()
+
         self.entity.position:set(Map:getTilePosition(indices.x, indices.y))
         self.indices = indices
+
+        e = Factory:createTeleportParticle()
+        e.position = self.entity.position
+        e:insert()
     end
 
     local mouse = gengine.input.mouse
