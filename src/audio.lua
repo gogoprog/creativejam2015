@@ -1,4 +1,7 @@
-Audio = {}
+Audio = {
+    itIsSoundAllowed = true,
+    itIsMusicAllowed = true
+}
 
 function Audio:init()
     local defs = {
@@ -22,15 +25,29 @@ function Audio:init()
 end
 
 function Audio:playSound(name, index, volume)
-    local s = self.sounds[name]
-    index = index or ((#s == 1) and 1 or math.random(1, #s))
-    gengine.audio.playSound(s[index], volume or 0.6)
+
+    if self.itIsSoundAllowed then
+        local s = self.sounds[name]
+        index = index or ((#s == 1) and 1 or math.random(1, #s))
+        gengine.audio.playSound(s[index], volume or 0.6)
+    end
 end
 
 
 function Audio:playMusic()
-    if not self.music then
-        gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
-        self.music = true
+
+    if   self.itIsMusicAllowed then
+        if not self.music then
+            gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
+            self.music = true
+        end
     end
+end
+
+function Audio:setItIsSoundAllowed()
+    self.itIsSoundAllowed = not self.itIsSoundAllowed
+end
+
+function Audio:setItIsMusicAllowed()
+    self.itIsMusicAllowed = not self.itIsMusicAllowed
 end

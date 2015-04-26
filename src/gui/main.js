@@ -75,3 +75,13 @@ function updateLevel(count)
 {
     $("#level").html("Level " + count);
 }
+
+function toggleSound()
+{
+    gengine_execute("Audio:setItIsSoundAllowed()");
+}
+
+function toggleMusic()
+{
+    gengine_execute("Audio:setItIsMusicAllowed()");
+}
