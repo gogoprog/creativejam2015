@@ -350,7 +350,7 @@ function Factory:createBonusParticles()
             {
                 texture = gengine.graphics.texture.get("glasses"),
                 size = 1,
-                emitterRate = 10,
+                emitterRate = 1,
                 emitterLifeTime = 1,
                 extentRange = {vector2(32,32), vector2(34,34)},
                 lifeTimeRange = {0.5, 1},
@@ -398,7 +398,7 @@ function Factory:createLifeParticles()
             {
                 texture = gengine.graphics.texture.get("life"),
                 size = 1,
-                emitterRate = 10,
+                emitterRate = 1,
                 emitterLifeTime = 1,
                 extentRange = {vector2(32,32), vector2(34,34)},
                 lifeTimeRange = {0.5, 1},
