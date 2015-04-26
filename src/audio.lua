@@ -26,3 +26,11 @@ function Audio:playSound(name, index, volume)
     index = index or ((#s == 1) and 1 or math.random(1, #s))
     gengine.audio.playSound(s[index], volume or 0.6)
 end
+
+
+function Audio:playMusic()
+    if not self.music then
+        gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
+        self.music = true
+    end
+end

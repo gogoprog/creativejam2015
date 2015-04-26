@@ -66,17 +66,17 @@ function ComponentPlayer.onStateUpdate:idling(dt)
         end
 
         if mouse:isJustDown(1) then
-            startMousePosition = mouse:getPosition() 
+            self.startMousePosition = mouse:getPosition() 
         end
 
         if mouse:isDown(1) then 
-            if startMousePosition.x < mouse:getPosition(1).x and mouse:getPosition(1).x - startMousePosition.x > 100 then 
+            if self.startMousePosition.x < mouse:getPosition(1).x and mouse:getPosition(1).x - self.startMousePosition.x > 100 then 
                 self:tryMove(self.indices.x + 1, self.indices.y)
-            elseif startMousePosition.x > mouse:getPosition(1).x and startMousePosition.x - mouse:getPosition(1).x > 100 then  
+            elseif self.startMousePosition.x > mouse:getPosition(1).x and self.startMousePosition.x - mouse:getPosition(1).x > 100 then  
                 self:tryMove(self.indices.x - 1, self.indices.y)
-            elseif startMousePosition.y < mouse:getPosition(1).y and mouse:getPosition(1).y - startMousePosition.y > 100 then  
+            elseif self.startMousePosition.y < mouse:getPosition(1).y and mouse:getPosition(1).y - self.startMousePosition.y > 100 then  
                 self:tryMove(self.indices.x, self.indices.y - 1)
-            elseif startMousePosition.y > mouse:getPosition(1).y and startMousePosition.y - mouse:getPosition(1).y > 100 then 
+            elseif self.startMousePosition.y > mouse:getPosition(1).y and self.startMousePosition.y - mouse:getPosition(1).y > 100 then 
                 self:tryMove(self.indices.x, self.indices.y + 1)
             end
         end

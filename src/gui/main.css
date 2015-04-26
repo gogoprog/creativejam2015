@@ -4,13 +4,15 @@
     font-weight: bold;
 }
 
-#main {
+body, #main {
     font-family: "HeartHole";
     color:white;
     font-size:45px;
     text-align: center;
     margin:0;
     padding:0;
+    width:768px;
+    height:768px;
 }
 
 .title {
