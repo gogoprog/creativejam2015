@@ -13,7 +13,6 @@ Factory = Factory or {
 }
 
 function Factory:pickFromPool(t)
-    -- return nil
     local n = #t
     if n > 0 then
         local e = t[n]
@@ -112,6 +111,23 @@ function Factory:init()
             frames = { 0, 1, 2, 3, 4, 5, 6, 7 },
             framerate = 16,
             loop = true
+        }
+        )
+
+    atlas = gengine.graphics.atlas.create(
+        "periscope",
+        gengine.graphics.texture.get("periscope"),
+        1,
+        6
+        )
+
+    self.animations.periscope = gengine.graphics.animation.create(
+        "periscope",
+        {
+            atlas = atlas,
+            frames = { 0, 1, 2, 3, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5 },
+            framerate = 8,
+            loop = false
         }
         )
 end

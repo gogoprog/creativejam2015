@@ -21,10 +21,6 @@ end
 
 function ComponentPlayer.onStateEnter:idling()
 
-    if self.indices == Map.endPositionIndices then
-        Game:win()
-    end
-
     self.entity.sprite:removeAnimations()
     self.entity.sprite:pushAnimation(Factory.animations.idle)
 
@@ -145,6 +141,10 @@ function ComponentPlayer.onStateUpdate:moving(dt)
     if done then
         self.indices = self.target
         self:changeState("idling")
+
+        if self.indices == Map.endPositionIndices then
+            Game:win()
+        end
     end
 end
 

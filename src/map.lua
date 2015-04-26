@@ -35,7 +35,16 @@ local textures = {
     "rock1",
     "rock2",
     "rock3",
-    "rock4"
+    "rock4",
+    "ruins_bottom",
+    "ruins_corner_b_l",
+    "ruins_corner_b_r",
+    "ruins_corner_t_l",
+    "ruins_corner_t_r",
+    "ruins_full",
+    "ruins_left",
+    "ruins_right",
+    "ruins_top"
 }
 
 function Map:loadFile(filename, id)
