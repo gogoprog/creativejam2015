@@ -30,16 +30,14 @@
         </div>
 
         <div id="options">
-            <span class="title">Objectif :<br/>Niquer au plutaupe!</span><br/>
-            <span class="subtitle">options</span><br/>
+            <span class="title">Options</span><br/>
+            <br/>
             <br/>
             <br/>
             <br/>
             <br/>
             <input type="checkbox" id="sounds" checked onchange="toggleSound()"/><span>Sounds</span><br/>
-            <input type="checkbox" id="music" checked onchange="toggleMusic()"/><span>Music</span><br/>
-            <input type="checkbox"/><span>Gore mode</span><br/>
-            <br/>
+            <input type="checkbox" id="music" checked onchange="toggleMusic()"/><span>Music</span>
             <br/>
             <span class="button" onclick="showPage('menu', 500);">Back</span><br/>
         </div>
@@ -61,17 +59,17 @@
         </div>
 
         <div id="hud">
-            <div style="position:fixed;top:40px;left:50px">
+            <div style="position:fixed;bottom:40px;left:50px">
                 <img src="/gui/life.png" />
             </div>
-            <span style="position:fixed;top:50px;left:100px">x</span>
-            <span id="life" style="position:fixed;top:50px;left:140px">3</span></br>
-            <span id="level" style="position:absolute;top:50px;left:0;width:100%;" >10</span></br>
-            <div style="position:fixed;top:40px;right:50px">
+            <span style="position:fixed;bottom:30px;left:100px">x</span>
+            <span id="life" style="position:fixed;bottom:30px;left:140px">3</span></br>
+            <span id="level" style="position:absolute;bottom:30px;left:0;width:100%;" >10</span></br>
+            <div style="position:fixed;bottom:40px;right:50px">
                 <img src="/gui/glasses.png"/>
             </div>
-            <span style="position:fixed;top:50px;right:140px">x</span>
-            <span id="glasses" style="position:fixed;top:50px;right:170px">1</span></br>
+            <span style="position:fixed;bottom:30px;right:140px">x</span>
+            <span id="glasses" style="position:fixed;bottom:30px;right:170px">1</span></br>
         </div>
     </div>
 
