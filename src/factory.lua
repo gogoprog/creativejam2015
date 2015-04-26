@@ -468,7 +468,7 @@ function Factory:createBonusParticles()
         e:addComponent(
             ComponentParticleSystem(),
             {
-                texture = gengine.graphics.texture.get("glasses"),
+                texture = gengine.graphics.texture.get("glasses_particle"),
                 size = 1,
                 emitterRate = 100,
                 emitterLifeTime = 0.1,
