@@ -18,10 +18,6 @@ function start()
 
     Application:init()
 
-    gengine.gui.onPageLoaded = function()
-        Application:start()
-    end
-
     gengine.gui.loadFile("gui/main.html")
 end
 

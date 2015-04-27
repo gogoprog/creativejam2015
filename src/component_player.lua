@@ -72,7 +72,7 @@ function ComponentPlayer.onStateEnter:idling()
 
     local mouse = gengine.input.mouse
 
-    if mouse:isDown(1) then 
+    if mouse:isDown(1) then
         self.startMousePosition = mouse:getPosition()
     end
 end
@@ -97,14 +97,14 @@ function ComponentPlayer.onStateUpdate:idling(dt)
             self.startMousePosition = mouse:getPosition()
         end
 
-        if mouse:isDown(1) then 
-            if self.startMousePosition.x < mouse:getPosition().x and mouse:getPosition().x - self.startMousePosition.x > 100 then 
+        if mouse:isDown(1) and self.startMousePosition then
+            if self.startMousePosition.x < mouse:getPosition().x and mouse:getPosition().x - self.startMousePosition.x > 100 then
                 self:tryMove(self.indices.x + 1, self.indices.y)
-            elseif self.startMousePosition.x > mouse:getPosition().x and self.startMousePosition.x - mouse:getPosition().x > 100 then  
+            elseif self.startMousePosition.x > mouse:getPosition().x and self.startMousePosition.x - mouse:getPosition().x > 100 then
                 self:tryMove(self.indices.x - 1, self.indices.y)
-            elseif self.startMousePosition.y < mouse:getPosition().y and mouse:getPosition().y - self.startMousePosition.y > 100 then  
+            elseif self.startMousePosition.y < mouse:getPosition().y and mouse:getPosition().y - self.startMousePosition.y > 100 then
                 self:tryMove(self.indices.x, self.indices.y - 1)
-            elseif self.startMousePosition.y > mouse:getPosition().y and self.startMousePosition.y - mouse:getPosition().y > 100 then 
+            elseif self.startMousePosition.y > mouse:getPosition().y and self.startMousePosition.y - mouse:getPosition().y > 100 then
                 self:tryMove(self.indices.x, self.indices.y + 1)
             end
         end
@@ -182,10 +182,10 @@ end
 function ComponentPlayer.onStateEnter:dying()
     self.entity.sprite:removeAnimations()
     self.entity.sprite:pushAnimation(Factory.animations.dead)
-end 
+end
 
 function ComponentPlayer.onStateUpdate:dying(dt)
-end 
+end
 
 function ComponentPlayer.onStateExit:dying()
 end
@@ -210,7 +210,7 @@ function ComponentPlayer:tryMove(i, j)
         e:insert()
         Game.camera.shaker:shake(0.5)
         Game:addLife(-1)
-        if Game:getLife() == 0 then 
+        if Game:getLife() == 0 then
             self:changeState("dying")
         else
             self:changeState("shaking")

@@ -32,7 +32,7 @@ function showPage(name, duration)
 }
 
 $(function() {
-    var children = $("#main").children().each(function(i) { 
+    var children = $("#main").children().each(function(i) {
         var name = $(this).attr('id');
         pages[name] = {
             element: $(this)
@@ -51,6 +51,8 @@ $(function() {
             gengine_execute("Game.startLevel = " + ui.value);
         }
         });
+
+    gengine_execute("Application:start()")
 });
 
 function play()

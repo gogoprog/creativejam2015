@@ -38,7 +38,7 @@ function Audio:playMusic()
 
     if   self.itIsMusicAllowed then
         if not self.music then
-            gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 1.0, true)
+            gengine.audio.playMusic("data/niquer-au-plutaupe.mp3", 0.75, true)
             self.music = true
         end
     end
